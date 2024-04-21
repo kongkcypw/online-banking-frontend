@@ -6,9 +6,25 @@ const Register = () => {
     const [tempPassword, setTempPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    const [warning, setWarning] = useState(false);
+
     const handleInputChange = (event, setState) => {
         setState(event.target.value);
     };
+
+    const handlePassword = (event) => {
+        setConfirmPassword(event.target.value);
+        validatePassword(tempPassword, event.target.value);
+    };
+
+    const validatePassword = (password1, password2) => {
+        if (password1 !== password2) {
+            setWarning(true);
+        }
+        else {
+            setWarning(false);
+        }
+    }
 
     const handleSubmit = () => {
         console.log(`Username: ${username}`);
@@ -44,10 +60,14 @@ const Register = () => {
                 type="text"
                 id="confirm_password"
                 value={confirmPassword}
-                onChange={(e) => handleInputChange(e, setConfirmPassword)}
+                onChange={(e) => handlePassword(e)}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 placeholder="ยืนยันรหัสผ่าน"
             />
+
+            {warning &&
+                <p className='bg-red-200'>รหัสผ่านของคุณไม่ตรงกัน</p>
+            }
 
             <div className='flex'>
                 <button type="submit" className="mt-4 px-4 py-2 bg-white border-blue-500 border-2 text-blue-500 rounded hover:bg-blue-200" onClick={handleSubmit}>
