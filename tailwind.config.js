@@ -5,6 +5,9 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      notoTH:["Noto Sans Thai", "sans-serif"],
+    },
   },
   daisyui: {
     themes: ["light"],

@@ -2,12 +2,15 @@ import React from "react";
 import { IoPersonSharp, IoPersonOutline } from "react-icons/io5";
 import { FaPowerOff } from "react-icons/fa";
 import { FaRegBell } from "react-icons/fa6";
+import { useLocation } from "react-router-dom";
 
 
 const Topbar = () => {
+    const location = useLocation();
+    const isHome = location.pathname === "/";
+    const isOverall = location.pathname === "/overall";
     return (
-        // <div className="fixed w-full top-0 start-0 bg-gradient-to-tr from-[#0161D1] to-[#013CC9] py-2 pt-3">
-        <div className="fixed w-full top-0 start-0 py-2 pt-3 z-10 bg-gradient-to-r from-slate-700 to-slate-800">
+        <div className={`fixed ${(isHome||isOverall) ? " block" : "hidden"} w-full top-0 start-0 py-2 pt-3 z-10 bg-gradient-to-r from-slate-700 to-slate-800`}>
             <div className="grid grid-cols-3 items-center">
                 <div className="col-span-1 flex justify-start ms-2">
                     <div className=" rounded-full border-2 border-orange-400">

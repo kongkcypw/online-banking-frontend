@@ -1,17 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import UrgentTransaction from '../Components/Home/UrgentTransaction'
-import Topbar from '../Components/Global/Topbar'
 import QuickBalance from '../Components/Home/QuickBalance'
-import NavBar from '../Components/Global/NavBar'
+import Favorites from '../Components/Home/Favorites'
+import Welcome from '../Components/Home/Welcome'
+import { UserContext } from '../contexts/userContext'
 
 const Home = () => {
+
+  const { checkUserLogin, isLogedIn } = useContext(UserContext);
+
+  useEffect(() => {
+    checkUserLogin()
+  }, [])
+
   return (
-    <div className="w-full h-screen">
-      <Topbar />
-      <UrgentTransaction />
-      <QuickBalance/>
-      <NavBar/>
-    </div>
+    <>
+      {isLogedIn
+        ? <div className="w-full h-screen">
+          <UrgentTransaction />
+          <QuickBalance />
+          <Favorites />
+        </div>
+        : <div className="w-full h-screen">
+          <Welcome />
+        </div>}
+
+    </>
   )
 }
 

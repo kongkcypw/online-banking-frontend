@@ -8,7 +8,7 @@ import { LuPanelTopOpen } from "react-icons/lu";
 
 const UrgentTransaction = () => {
     return (
-        <div className="pt-12">
+        <div className="pt-12 font-notoTH">
             <div className="flex border-s-4 border-orange-400">
                 <h2 className="font-bold ms-2 text-white">ธุรกรรมด่วน</h2>
             </div>
@@ -27,7 +27,7 @@ const UrgentTransaction = () => {
                     </div>
                 </Link>
 
-                <Link to="/register">
+                <Link to="/topup">
                     <div className="col-span-1 flex-col items-center justify-center">
                         <div className="flex flex-col items-center justify-center">
                             <div className="inset-0 border-2 border-slate-300 rounded-full w-10 h-10 flex items-center justify-center">
