@@ -25,7 +25,7 @@ function App() {
 
   return (
     <>
-      <div className="min-h-screen">
+      <div className="min-h-screen font-notoTH ">
         <Router>
           <Topbar/>
           <NavBar/>
