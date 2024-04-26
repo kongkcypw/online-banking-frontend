@@ -1,13 +1,17 @@
-import { React, useState } from "react";
+import { React, useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import { FaHome, FaDollarSign } from "react-icons/fa";
 import { IoPersonSharp } from "react-icons/io5";
+import { UserContext } from "../../contexts/userContext";
 
 
 const NavBar = () => {
+
+    const { isLogedIn } = useContext(UserContext);
+
     const location = useLocation();
-    const isHome = location.pathname === "/";
+    const isHome = location.pathname === "/" && isLogedIn === true;
     const isOverall = location.pathname === "/overall";
 
     return (
