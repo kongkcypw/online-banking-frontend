@@ -9,7 +9,7 @@ const QuickBalance = () => {
         setIsView(!isView);
     };
     return (
-        <div className="mt-12">
+        <div className="mt-12 font-notoTH">
             <div className="flex border-s-4 border-orange-400">
                 <h2 className="font-bold ms-2 text-white">เช็คยอดเงินทันที</h2>
             </div>
