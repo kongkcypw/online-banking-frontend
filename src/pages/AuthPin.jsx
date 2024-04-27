@@ -38,14 +38,17 @@ const AuthPin = () => {
         else if (auth_pin_response.status === 201) {
             setWarningMessage('กรุณาเข้าสู่ระบบด้วยอีเมลก่อน');
             setWarning(true)
+            setPin('');
         }
         else if (auth_pin_response.status === 202) {
             setWarningMessage('กรุณากรอก PIN ให้ครบ');
             setWarning(true)
+            setPin('');
         }
         else if (auth_pin_response.status === 203) {
             setWarningMessage('PIN ไม่ถูกต้อง');
             setWarning(true)
+            setPin('');
         }
     }
 
