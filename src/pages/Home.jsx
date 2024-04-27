@@ -16,10 +16,11 @@ const Home = () => {
   return (
     <>
       {isLogedIn
-        ? <div className="w-full h-screen">
+        ? <div className="w-full h-screen"> 
           <UrgentTransaction />
           <QuickBalance />
           <Favorites />
+
         </div>
         : <div className="w-full h-screen">
           <Welcome />
