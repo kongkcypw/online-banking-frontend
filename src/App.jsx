@@ -19,6 +19,7 @@ import Topbar from "./Components/Global/Topbar";
 import CreatePin from "./pages/CreatePin";
 import TopUp from "./pages/TopUp";
 import AuthPin from "./pages/AuthPin";
+import Withdraw from "./pages/Withdraw";
 
 import Tranfer from "./pages/Tranfer";
 
@@ -44,6 +45,7 @@ function App() {
 
             <Route path="/tranfer" element={<Tranfer />} />
 
+            <Route path="/withdraw" element={<Withdraw />} />
           </Routes>
         </Router>
       </div>
