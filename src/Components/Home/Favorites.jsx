@@ -7,7 +7,7 @@ const FavoriteData = [
     {
         id: "1",
         image: "https://daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.jpg",
-        name: "User1"
+        name: "best"
     },
     {
         id: "2",

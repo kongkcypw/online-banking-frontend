@@ -14,7 +14,7 @@ const UrgentTransaction = () => {
             </div>
 
             <div className="grid grid-cols-4 items-center mt-4">
-                <Link to="/register">
+                <Link to="/tranfer">
                     <div className="col-span-1 flex-col items-center justify-center">
                         <div className="flex flex-col items-center justify-center">
                             <div className="inset-0 border-2 border-slate-300 rounded-full w-10 h-10 flex items-center justify-center">
