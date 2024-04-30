@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { IoPersonSharp, IoPersonOutline } from "react-icons/io5";
 import { FaPowerOff } from "react-icons/fa";
 import { FaRegBell } from "react-icons/fa6";
 import { useLocation } from "react-router-dom";
+import { UserContext } from "../../contexts/userContext";
 
 
 const Topbar = () => {
+
+    const { isLogedIn } = useContext(UserContext);
+
     const location = useLocation();
-    const isHome = location.pathname === "/";
+    const isHome = location.pathname === "/" && isLogedIn === true;
     const isOverall = location.pathname === "/overall";
     return (
         <div className={`fixed ${(isHome||isOverall) ? " block" : "hidden"} w-full top-0 start-0 py-2 pt-3 z-10 bg-gradient-to-r from-slate-700 to-slate-800`}>
