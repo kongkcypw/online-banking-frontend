@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext, useLayoutEffect } from 'react'
 import { useDataFetch } from '../hooks/useDataFetch';
 import { UserContext } from '../contexts/userContext';
 import Loading from '../Components/Global/Loading';
+import Numpad from '../Components/Pin/Numpad';
+import PinCounter from '../Components/Pin/PinCounter';
 
 const AuthPin = () => {
 
@@ -10,12 +12,14 @@ const AuthPin = () => {
     const { POST_DATA_WITH_BODYPARAMS } = useDataFetch();
 
     const [pin, setPin] = useState('');
+    const [warning, setWarning] = useState(false);
+    const [warningMessage, setWarningMessage] = useState('');
 
     useEffect(() => {
         authTokenInStorage();
     }, [])
 
-    const handleClick = async () => {
+    const handleAuthPin = async () => {
         const localStorageData = JSON.parse(window.localStorage.getItem(import.meta.env.VITE_LOCAL_STORAGE_NAME));
 
         // Auth Pin
@@ -26,25 +30,56 @@ const AuthPin = () => {
         const auth_pin_response = await POST_DATA_WITH_BODYPARAMS('/login/pin', bodyParams);
         console.log(auth_pin_response);
 
-        // Auth token
-        authNewToken(auth_pin_response.token);
+        if (auth_pin_response.status === 200) {
+            // Auth token
+            authNewToken(auth_pin_response.token);
+            setWarning(false);
+        }
+        else if (auth_pin_response.status === 201) {
+            setWarningMessage('กรุณาเข้าสู่ระบบด้วยอีเมลก่อน');
+            setWarning(true)
+            setPin('');
+        }
+        else if (auth_pin_response.status === 202) {
+            setWarningMessage('กรุณากรอก PIN ให้ครบ');
+            setWarning(true)
+            setPin('');
+        }
+        else if (auth_pin_response.status === 203) {
+            setWarningMessage('PIN ไม่ถูกต้อง');
+            setWarning(true)
+            setPin('');
+        }
     }
+
+    const handleNumpadClick = (number) => {
+        if (number !== 10) {
+            const totalPin = pin + JSON.stringify(number);
+            setPin(totalPin)
+        }
+        else {
+            if (pin.length > 0) {
+                const totalPin = pin.replace(/.$/, '');;
+                setPin(totalPin);
+            }
+        }
+    }
+
+    useEffect(() => {
+        if (pin && pin.length >= 6) {
+            handleAuthPin();
+        }
+        console.log(pin);
+    }, [pin])
 
     return (
         <div className='text-white'>
-            {isAuthPinSuccess === null 
-            ? <Loading /> 
-            : <>
-                    <p className="block text-lg text-left font-medium">Pin</p>
-                    <input
-                        type="text"
-                        id="pin"
-                        value={pin}
-                        onChange={(e) => setPin(e.target.value)}
-                        className="text-black mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        placeholder="ระบุ pin"
-                    />
-                    <button onClick={handleClick}>ยืนยัน</button>
+            {isAuthPinSuccess === null
+                ? <Loading />
+                : <>
+                    <p className="text-center text-2xl font-medium pt-20">กรุณาใส่รหัสผ่าน</p>
+                    <PinCounter fillAmount={pin.length}/>
+                    <Numpad handleNumpadClick={handleNumpadClick} />
                 </>
             }
         </div>
