@@ -32,7 +32,7 @@ const Tranfer = () => {
   };
 
   return (
-    <div>
+    <div className='mt-6'>
       <UserInfo firstname={firstname}
       lastname={lastname}
       useraccount={useraccount}

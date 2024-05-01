@@ -2,7 +2,7 @@ const TranferGroup = ({ accountnum, setAccountnum, amount, setAmount, handleInpu
     return (
         <div>
          
-            <label className='mr-96 font-bold text-white '> ถึง </label>
+            <p className='text-left font-bold text-white '> ถึง </p>
             <div className='border-2 rounded bg-white border-white'>
 
                 

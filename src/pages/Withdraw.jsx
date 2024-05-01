@@ -36,7 +36,13 @@ const Withdraw = () => {
 
   return (
 
-    <div className=' text-white'>
+    <div className=' text-white mt-8'>
+      <div className='text-black'><UserInfo firstname={firstname}
+        lastname={lastname}
+        useraccount={useraccount}
+        balance={balance} /></div>
+
+
       <p className='text-2xl font-bold'>ถอนเงิน</p>
 
       <div className='mt-2 text-black text-left'>
