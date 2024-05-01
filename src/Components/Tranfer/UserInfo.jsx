@@ -1,13 +1,12 @@
-const UserInfo = ({ firstname, lastname, useraccount, balance}) => {
+const UserInfo = ({ firstname, lastname, useraccount, balance }) => {
     return (
         <div>
             <h1 className='font-bold text-3xl text-white '>โอนเงิน</h1>
-            <div>
-                <label className='mr-96 font-bold text-white '> จาก </label>
+            <div className='text-black text-left'>
                 <p className='border-2 rounded bg-white border-white'>
-                    <p className='pr-48 font-bold'>  {firstname} {lastname} </p>
-                    <p className=' pr-32  text-gray-500'>หมายเลขบัญชี: {useraccount} </p>
-                    <p className=' pr-56 font-semibold'> {balance} THB</p>
+                    <p className='ml-2 text-lg font-bold'> {firstname} {lastname} </p>
+                    <p className='ml-6 text-gray-600'>{useraccount} </p>
+                    <p className='ml-6 text-gray-600'> {balance} บาท</p>
                 </p>
             </div>
         </div>
