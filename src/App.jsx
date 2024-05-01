@@ -15,12 +15,10 @@ import Topbar from "./Components/Global/Topbar";
 import CreatePin from "./pages/CreatePin";
 import TopUp from "./pages/TopUp";
 import AuthPin from "./pages/AuthPin";
-
 import Withdraw from "./pages/Withdraw";
-
 import Tranfer from "./pages/Tranfer";
-
 import Profile from "./pages/Profile";
+import TopbarWithBack from "./Components/Global/TopBarWithBack";
 
 function App() {
   const { isAuthPinSuccess } = useContext(UserContext);
@@ -29,8 +27,9 @@ function App() {
     <>
       <div className="min-h-screen font-notoTH ">
         <Router>
-          <Topbar />
-          <NavBar />
+          <Topbar/>
+          <TopbarWithBack/>
+          <NavBar/>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -39,19 +38,13 @@ function App() {
             <Route path="/register/pin" element={<CreatePin />} />
             <Route path="/overall" element={<Overall />} />
 
-            <Route
-              path="/topup"
-              element={isAuthPinSuccess ? <TopUp /> : <AuthPin />}
-            />
+            {/* <Route path="/topup" element={isAuthPinSuccess ? <TopUp /> : <AuthPin/>} /> */}
+            <Route path="/topup" element={<TopUp />} />
 
-            <Route path="/tranfer" element={<Tranfer />} />
+            <Route path="/transfer" element={<Tranfer />} />
 
             <Route path="/withdraw" element={<Withdraw />} />
 
-            <Route
-              path="/topup"
-              element={isAuthPinSuccess ? <TopUp /> : <AuthPin />}
-            />
             <Route path="/profile" element={<Profile />} />
           </Routes>
         </Router>

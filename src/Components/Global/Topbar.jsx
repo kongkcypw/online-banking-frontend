@@ -21,7 +21,7 @@ const Topbar = () => {
                         <IoPersonOutline className="text-xl text-white m-1"/>
                     </div>
                 </div>
-                <div className="col-span-1 flex justify-center items-end">
+                <div className="col-span-1 flex justify-center items-center">
                     <p className="font-bold text-white text-lg">Online</p>
                     <p className="font-bold text-white">Banking</p>
                 </div>
