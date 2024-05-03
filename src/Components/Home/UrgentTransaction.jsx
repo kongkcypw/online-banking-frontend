@@ -40,7 +40,7 @@ const UrgentTransaction = () => {
                     </div>
                 </Link>
 
-                <Link to="/register">
+                <Link to="/bill">
                     <div className="col-span-1 flex-col items-center justify-center">
                         <div className="flex flex-col items-center justify-center">
                             <div className="inset-0 border-2 border-slate-300 rounded-full w-10 h-10 flex items-center justify-center">

@@ -19,6 +19,7 @@ import Withdraw from "./pages/Withdraw";
 import Tranfer from "./pages/Tranfer";
 import Profile from "./pages/Profile";
 import TopbarWithBack from "./Components/Global/TopBarWithBack";
+import Bill from "./pages/Bill";
 
 function App() {
   const { isAuthPinSuccess } = useContext(UserContext);
@@ -40,6 +41,7 @@ function App() {
 
             {/* <Route path="/topup" element={isAuthPinSuccess ? <TopUp /> : <AuthPin/>} /> */}
             <Route path="/topup" element={<TopUp />} />
+            <Route path="/bill" element={<Bill />} />
 
             <Route path="/transfer" element={<Tranfer />} />
 
