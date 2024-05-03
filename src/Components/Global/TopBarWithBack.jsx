@@ -14,6 +14,8 @@ const TopbarWithBack = () => {
     const isTopUp = location.pathname === "/topup";
     const isTransfer = location.pathname === "/transfer";
     const isWithdraw = location.pathname === "/withdraw";
+    const isBill = location.pathname === "/bill";
+
     return (
         <div className={`fixed ${(isHome || isOverall) ? " hidden" : "block"} w-full top-0 start-0 py-2 pt-3 z-10 bg-gradient-to-r from-slate-700 to-slate-800`}>
             <div className="grid grid-cols-3 items-center">
@@ -27,6 +29,7 @@ const TopbarWithBack = () => {
                         {isTransfer && "โอนเงิน"}
                         {isTopUp && "เติมเงิน"}
                         {isWithdraw && "ถอนเงิน"}
+                        {isBill && "จ่ายบิล"}
                     </p>
                 </div>
                 <div className="col-span-1"/>
