@@ -38,13 +38,13 @@ const Withdraw = () => {
 
     <div className=' text-white'>
 
-      <div className='mt-2 text-black text-left'>
-        <p className='border-2 rounded bg-white border-white'>
-          <p className='ml-2 text-lg font-bold'> {firstname} {lastname} </p>
-          <p className='ml-6 text-gray-600'>{useraccount} </p>
-          <p className='ml-6 text-gray-600'> {balance} บาท</p>
-        </p>
-      </div>
+      <div className='text-black'><UserInfo firstname={firstname}
+        lastname={lastname}
+        useraccount={useraccount}
+        balance={balance} /></div>
+
+
+      <p className='text-2xl font-bold'>ถอนเงิน</p>
 
       <p className='mt-2 text-lg text-left'>เลือกจำนวนเงิน</p>
       <div className='grid grid-cols-2 gap-y-2 gap-x-2 mt-2'>
@@ -55,6 +55,7 @@ const Withdraw = () => {
           เลือกจำนวนเงิน
         </button>
       </div>
+
       {amountCheck === true
         ? <div className='flex flex-col mt-2'>
           <label htmlFor="amount" className="text-left">จำนวนเงิน:</label>
