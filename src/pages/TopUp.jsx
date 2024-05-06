@@ -1,28 +1,29 @@
 import React, { useState } from 'react'
-import AccountDetail from '../Components/TopUp/AccountDetail'
-import TopUpChoice from '../Components/TopUp/TopUpChoice'
 import { useDataFetch } from '../hooks/useDataFetch';
 import { useEffect } from 'react';
+import TopUpChoice from '../Components/Topup/TopUpChoice'
+import AccountDetail from '../Components/Topup/AccountDetail';
 
-const TopUp = () => {
-    const [TopUpData, setTopUpData] = useState()
+const Topup = () => {
+    const [TopupData, setTopupData] = useState()
     const { GET_DATA } = useDataFetch();
+
     useEffect(() => {
         FetchData()
     }, [])
+
     const FetchData = async () => {
         const data = await GET_DATA('/topup/get-all')
-        setTopUpData(data.topup)
-        console.log(data)
+        setTopupData(data.topup)
     }
 
     return (
         <div>
             <AccountDetail />
             <p className='text-orange-400 text-md text-left mt-6'>ไปยัง</p>
-            {TopUpData &&
+            {TopupData &&
                 <div className='absolute bg-white w-full h-full left-0 mt-2 rounded-md'>
-                    <TopUpChoice TopUpData={TopUpData} />
+                    <TopUpChoice TopupData={TopupData} />
                 </div>
             }
 
@@ -30,4 +31,4 @@ const TopUp = () => {
     )
 }
 
-export default TopUp
+export default Topup;
