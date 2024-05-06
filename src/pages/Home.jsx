@@ -7,20 +7,20 @@ import { UserContext } from '../contexts/userContext'
 
 const Home = () => {
 
-  const { checkUserLogin, isLogedIn } = useContext(UserContext);
+  const { checkUserLogin, isLogedIn, userAccountInfo, getAccountInfo } = useContext(UserContext);
 
   useEffect(() => {
     checkUserLogin()
+    getAccountInfo()
   }, [])
 
   return (
     <>
-      {isLogedIn
-        ? <div className="w-full h-screen"> 
+      {(isLogedIn && userAccountInfo)
+        ? <div className="w-full h-screen">
           <UrgentTransaction />
-          <QuickBalance />
+          <QuickBalance info={userAccountInfo}/>
           <Favorites />
-
         </div>
         : <div className="w-full h-screen">
           <Welcome />
