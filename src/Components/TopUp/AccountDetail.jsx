@@ -3,7 +3,7 @@ import React from "react";
 const AccountDetail =()=>{
     return(
         <div>
-            <p className='text-orange-400 text-md text-left mt-6'>จาก</p>
+            <p className='text-orange-400 text-md text-left'>จาก</p>
             <div className='bg-white rounded-lg px-4 py-4 mt-2'>
                 <p className='text-left font-bold text-lg'>ดนัย เเสงบัวหมัด</p>
                 <div className='flex gap-x-2 text-sm'>

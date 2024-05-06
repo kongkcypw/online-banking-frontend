@@ -26,7 +26,7 @@ function App() {
 
   return (
     <>
-      <div className="min-h-screen font-notoTH ">
+      <div className="min-h-screen font-notoTH pt-12">
         <Router>
           <Topbar/>
           <TopbarWithBack/>
