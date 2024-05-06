@@ -7,7 +7,9 @@ const UserProvider = ({ children }) => {
     const { POST_DATA_WITH_BODYPARAMS } = useDataFetch();
 
     const [userEmail, setUserEmail] = useState(null);
+    const [userID, setUserID] = useState(null);
     const [userToken, setUserToken] = useState(null);
+    const [userAccountInfo, setUserAccountInfo] = useState(null);
 
     const [isLogedIn, setIsLogedIn] = useState(false);
     const [isAuthPinSuccess, setIsAuthPinSuccess] = useState(null);
@@ -70,18 +72,52 @@ const UserProvider = ({ children }) => {
     }
 
     // Store email to local storage
-    const storeEmail = (email) => {
+    const storeUser = (email, userID) => {
         let data = JSON.parse(window.localStorage.getItem(import.meta.env.VITE_LOCAL_STORAGE_NAME));
         if(data){
             data.email = email;
+            data.userID = userID;
         }
         else{
             data = {
                 email: email,
+                userID: userID,
                 token: ''
             }
         }
         window.localStorage.setItem(import.meta.env.VITE_LOCAL_STORAGE_NAME, JSON.stringify(data));
+    }
+
+    // Get email and userID
+    const getUserLocalStorage = () => {
+        let data = JSON.parse(window.localStorage.getItem(import.meta.env.VITE_LOCAL_STORAGE_NAME));
+        if(data){
+            setUserEmail(data.email)
+            setUserID(data.userID)
+            const email = data.email;
+            const uid = data.userID
+            return {email, uid }
+        }
+        else{
+            return
+        }
+    }
+
+    // Get Account info (ex. name, accountNumber, balance)
+    const getAccountInfo = async() => {
+        const { email, uid } = getUserLocalStorage();
+        const bodyParams = {
+            userID: uid
+        }
+        const response = await POST_DATA_WITH_BODYPARAMS('/account/get-info', bodyParams);
+        if(response.status === 200){
+            setUserAccountInfo(response.accountInfo)
+            return
+        }
+        else{
+            setUserAccountInfo(null)
+            return
+        }
     }
 
     const value = {
@@ -92,7 +128,12 @@ const UserProvider = ({ children }) => {
         isLogedIn,
         isAuthPinSuccess,
         setIsAuthPinSuccess,
-        storeEmail
+        storeUser,
+        getUserLocalStorage,
+        getAccountInfo,
+        userEmail,
+        userID,
+        userAccountInfo
     }
 
     return(
