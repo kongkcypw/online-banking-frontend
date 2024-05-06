@@ -31,4 +31,4 @@ const Topup = () => {
     )
 }
 
-export default Topup
+export default Topup;
