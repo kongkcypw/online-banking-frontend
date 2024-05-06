@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from 'react';
 import { useDataFetch } from "../hooks/useDataFetch";
-import AccountDetail from "../Components/TopUp/AccountDetail";
+import AccountDetail from "../Components/Topup/AccountDetail";
 import BillChoice from "../Components/Bill/BillChoice";
 
 const Bill = () => {

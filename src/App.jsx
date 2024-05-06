@@ -14,7 +14,7 @@ import NavBar from "./Components/Global/NavBar";
 import Overall from "./pages/Overall";
 import Topbar from "./Components/Global/Topbar";
 import CreatePin from "./pages/register/CreatePin";
-import TopUp from "./pages/TopUp";
+import Topup from "./pages/Topup";
 import AuthPin from "./pages/AuthPin";
 import Withdraw from "./pages/Withdraw";
 import Tranfer from "./pages/Tranfer";
@@ -49,7 +49,7 @@ function App() {
             <Route path="/overall" element={<Overall />} />
 
             {/* <Route path="/topup" element={isAuthPinSuccess ? <TopUp /> : <AuthPin/>} /> */}
-            <Route path="/topup" element={<TopUp />} />
+            <Route path="/topup" element={<Topup />} />
             <Route path="/bill" element={<Bill />} />
             <Route path="/transfer" element={<Tranfer />} />
             <Route path="/withdraw" element={<Withdraw />} />
