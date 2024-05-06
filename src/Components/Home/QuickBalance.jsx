@@ -3,11 +3,12 @@ import { useState } from "react";
 
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 
-const QuickBalance = () => {
+const QuickBalance = ({ info }) => {
     const [isView, setIsView] = useState(false);
     const viewBalance = () => {
         setIsView(!isView);
     };
+
     return (
         <div className="mt-12 font-notoTH">
             <div className="flex border-s-4 border-orange-400">
@@ -23,13 +24,13 @@ const QuickBalance = () => {
                         {!isView ? (
                             <p className="text-slate-500 text-sm font-semibold flex justify-end items-center mr-4">XX.XX</p>
                         ) :(
-                            <p className="text-Black text-sm font-semibold flex justify-end items-center mr-4">16,000.00</p> 
+                            <p className="text-Black text-sm font-semibold flex justify-end items-center mr-4">{info.Balance}</p> 
                         )}
                     </div>
                 </div>
                 <div className="grid grid-cols-2 mt-1">
                     <div className=" col-span-1 flex justify-start items-center ms-4">
-                        <p className="text-slate-500 text-xs font-semibold">XXX-X-X0000-X</p>
+                        <p className="text-slate-500 text-xs font-semibold">XXX-X-X{info.AccountNumber.slice(5,9)}-X</p>
                     </div>
                     <div className=" col-span-1">
                         <div onClick={viewBalance}>

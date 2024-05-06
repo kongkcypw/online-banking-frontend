@@ -33,7 +33,7 @@ const Welcome = () => {
             >เข้าสู่ระบบ
             </p>
           </button>
-          <button className='text-orange-400 font-bold' onClick={() => navigate("/register")}>สมัคร
+          <button className='text-orange-400 font-bold' onClick={() => navigate("/register/user")}>สมัคร
           </button>
         </div>
       </div>
