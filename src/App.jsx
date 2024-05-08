@@ -24,6 +24,7 @@ import Bill from "./pages/Bill";
 import RegisterAccount from "./pages/register/RegisterAccount";
 import CreateAccount from "./pages/register/CreateAccount";
 import ConfirmRegister from "./pages/register/ConfirmRegister";
+import Statement from "./pages/Statement";
 
 function App() {
   
@@ -54,6 +55,7 @@ function App() {
             <Route path="/transfer" element={<Tranfer />} />
             <Route path="/withdraw" element={<Withdraw />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/statement" element={<Statement />} />
           </Routes>
         </Router>
       </div>

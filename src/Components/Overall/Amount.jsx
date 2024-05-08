@@ -5,7 +5,7 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 const Amount = () => {
     return (
-        <div className="mt-12">
+        <div>
             <div className="flex-col text-start">
                 <div className="flex items-center gap-1">
                     <p className="text-white">บัญชีของฉัน</p>

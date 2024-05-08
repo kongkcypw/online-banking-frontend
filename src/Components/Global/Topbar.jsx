@@ -22,8 +22,11 @@ const Topbar = () => {
                     </div>
                 </div>
                 <div className="col-span-1 flex justify-center items-center">
-                    <p className="font-bold text-white text-lg">Online</p>
-                    <p className="font-bold text-white">Banking</p>
+                    <img 
+                    src="https://i.ibb.co/MyHVMps/Krungthon-Previous-Pure.png"
+                    className="h-6 w-7"
+                    />
+                    
                 </div>
                 <div className="col-span-1 flex justify-end mr-2 gap-x-3">
                     <FaRegBell className="text-lg text-white"/>

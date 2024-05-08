@@ -21,9 +21,10 @@ const TopbarWithBack = () => {
         <div className={`fixed ${(isHome || isOverall || isRegister) ? " hidden" : "block"} w-full top-0 start-0 py-2 pt-3 z-10 bg-gradient-to-r from-slate-700 to-slate-800`}>
             <div className="grid grid-cols-3 items-center">
                 <Link to="/">
-                    <div className="col-span-1 flex justify-start ms-2">
+                    <button 
+                        className="col-span-1 flex justify-start ms-2">
                         <FaArrowLeft className="text-xl text-white m-1" />
-                    </div>
+                    </button>
                 </Link>
                 <div className="col-span-1 flex justify-center items-center">
                     <p className="font-bold text-white text-lg">
@@ -33,7 +34,7 @@ const TopbarWithBack = () => {
                         {isBill && "จ่ายบิล"}
                     </p>
                 </div>
-                <div className="col-span-1"/>
+                <div className="col-span-1" />
             </div>
         </div>
     )

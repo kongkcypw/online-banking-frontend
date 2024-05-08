@@ -84,7 +84,7 @@ const Register = () => {
     return (
         <div className='text-black min-h-screen'>
 
-            <p className='text-xl px-2 font-bold text-left mt-8 text-white'>สมัครบริการ Krungthon Previous</p>
+            <p className='text-xl px-2 font-bold text-left -mt-4 text-white'>สมัครบริการ Krungthon Previous</p>
             <p className='text-xl px-2 font-bold text-left mt-1 text-orange-400'>กรอกข้อมูลส่วนตัว</p>
 
             <div className='absolute bg-white start-0 w-full px-4 mt-24 min-h-screen'>

@@ -5,7 +5,7 @@ import { RxChevronRight } from "react-icons/rx";
 const Profile = () => {
   return (
     <div>
-      <p className="text-white text-xl font-bold mt-8">ข้อมูลส่วนตัว</p>
+      <p className="text-white text-xl font-bold -mt-8">ข้อมูลส่วนตัว</p>
       <PiUserCircleThin className="text-white text-8xl ml-28 mt-5" />
       <div className="text-white text-base font-normal">ดนัย</div>
       <div className="text-white text-base font-normal">
