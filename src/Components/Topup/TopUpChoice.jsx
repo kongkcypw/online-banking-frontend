@@ -1,9 +1,18 @@
 import React from "react";
 import { GoSearch } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
 
 
 const TopUpChoice = ({ TopupData }) => {
-    const uniqueGroupTypes = Array.from(new Set(TopupData.map(item => item.TopupType)));
+
+    const navigate = useNavigate();
+
+    const uniqueGroupTypes = Array.from(new Set(TopupData.map(item => item.Type)));
+
+    const handleClick = (TopupID) => {
+        navigate(`/payment/${TopupID}`)
+    }
+
     return (
         <div className="mt-6">
             <div className="w-auto mx-6 border-2 border-orange-300 rounded-md flex items-center">
@@ -18,15 +27,15 @@ const TopUpChoice = ({ TopupData }) => {
                             {group}
                         </div>
                         <ul>
-                            {TopupData.filter(item => item.TopupType === group)
+                            {TopupData.filter(item => item.Type === group)
                                 .map((item, itemIndex) => (
-                                    <div key={itemIndex} className="text-left flex items-center py-2 border-b border-gray-200 gap-x-4 hover:bg-slate-200">
+                                    <div key={itemIndex} onClick={() => handleClick(item.TopupID)} className="text-left flex items-center py-2 border-b border-gray-200 gap-x-4 hover:bg-slate-200">
                                         <div className="border border-slate-300 bg-white h-11 w-11 rounded-full flex justify-center items-center">
-                                            <img className="h-auto w-auto rounded-full" src={item.TopupImage} />
+                                            <img className="h-auto w-auto rounded-full" src={item.Image} />
                                         </div>
                                         <div>
                                             <div key={itemIndex} >
-                                                {item.TopupName}
+                                                {item.Name}
                                             </div>
                                         </div>
                                     </div>

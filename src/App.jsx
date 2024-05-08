@@ -25,6 +25,9 @@ import RegisterAccount from "./pages/register/RegisterAccount";
 import CreateAccount from "./pages/register/CreateAccount";
 import ConfirmRegister from "./pages/register/ConfirmRegister";
 import Statement from "./pages/Statement";
+import PaymentRequire from "./pages/payment/PaymentRequire";
+import { PaymentProvider } from "./contexts/paymentContext";
+import PaymentConfirm from "./pages/payment/PaymentConfirm";
 
 function App() {
   
@@ -47,15 +50,17 @@ function App() {
             <Route path="/register/confirm" element={<RegisterProvider><ConfirmRegister /></RegisterProvider>} />
             <Route path="/register/pin" element={<RegisterProvider><CreatePin /></RegisterProvider>} />
 
-            <Route path="/overall" element={<Overall />} />
+            <Route path="/transfer" element={isAuthPinSuccess ? <Tranfer /> : <AuthPin/>} />
+            <Route path="/topup" element={isAuthPinSuccess ? <Topup /> : <AuthPin/>} />
+            <Route path="/bill" element={isAuthPinSuccess ? <Bill /> : <AuthPin/>} />
+            <Route path="/withdraw" element={isAuthPinSuccess ? <Withdraw /> : <AuthPin/>} />
+            
+            <Route path="/overall" element={isAuthPinSuccess ? <Overall /> : <AuthPin/>} />
+            <Route path="/profile" element={isAuthPinSuccess ? <Profile />  : <AuthPin/>} />
+            <Route path="/statement" element={isAuthPinSuccess ?<Statement /> : <AuthPin/>} />
 
-            {/* <Route path="/topup" element={isAuthPinSuccess ? <TopUp /> : <AuthPin/>} /> */}
-            <Route path="/topup" element={<Topup />} />
-            <Route path="/bill" element={<Bill />} />
-            <Route path="/transfer" element={<Tranfer />} />
-            <Route path="/withdraw" element={<Withdraw />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/statement" element={<Statement />} />
+            <Route path="/payment/:destid" element={<PaymentProvider><PaymentRequire /></PaymentProvider>} />
+            <Route path="/payment-confirm" element={<PaymentProvider><PaymentConfirm /></PaymentProvider>} />
           </Routes>
         </Router>
       </div>
