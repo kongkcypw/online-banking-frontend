@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UserInfo from '../Components/Tranfer/UserInfo';
+
+import { FaArrowRight } from "react-icons/fa6";
+import { RxCross2 } from "react-icons/rx";
+
 const MoneyNumber = [100, 200, 300, 400, 500, 900, 1000, 2000, 3000];
 const Withdraw = () => {
   const [amount, setAmount] = useState(0);
@@ -29,29 +33,33 @@ const Withdraw = () => {
   };
 
   const MoneyButton = ({ amountButton, index }) => {
-    return (<button className={`text-black col-span-1  rounded-md ${selectMoney === index ? "bg-orange-400" : "bg-orange-300"}`} onClick={() => handleClick(amountButton, index)}>
-      {amountButton}
-    </button>)
+    return (
+      <button
+        className={`text-white font-medium col-span-1 py-2 rounded-md bg-transparent border-2 border-white
+        hover:bg-orange-400 hover:bg-opacity-80 focus:outline-none`}
+        onClick={() => handleClick(amountButton, index)}>
+
+        {amountButton}
+      </button>)
   };
 
   return (
 
     <div className=' text-white'>
+      <p className='text-left text-lg text-orange-400 mb-2'>สร้างรายการถอนเงินจากบัญชี</p>
+      <div className='text-black'>
+        <UserInfo firstname={firstname}
+          lastname={lastname}
+          useraccount={useraccount}
+          balance={balance} />
+      </div>
 
-      <div className='text-black'><UserInfo firstname={firstname}
-        lastname={lastname}
-        useraccount={useraccount}
-        balance={balance} /></div>
-
-
-      <p className='text-2xl font-bold'>ถอนเงิน</p>
-
-      <p className='mt-2 text-lg text-left'>เลือกจำนวนเงิน</p>
+      <p className='mt-6 text-lg text-orange-400 text-left'>เลือกจำนวนเงิน</p>
       <div className='grid grid-cols-2 gap-y-2 gap-x-2 mt-2'>
         {MoneyNumber.map((number, index) => (
           <MoneyButton amountButton={number} key={index} index={index} />
         ))}
-        <button className={`text-black col-span-1  rounded-md ${selectMoney === 9 ? "bg-orange-400" : "bg-orange-300"}`} onClick={() => handleAmount(9)}>
+        <button className={`text-white font-medium border-2 border-white col-span-1  rounded-md hover:bg-orange-400 duration-100 hover:bg-opacity-80 ${selectMoney === 9 ? "bg-orange-400" : "bg-transparent"}`} onClick={() => handleAmount(9)}>
           เลือกจำนวนเงิน
         </button>
       </div>
@@ -72,14 +80,39 @@ const Withdraw = () => {
         </div>
         : null
       }
-      <div className='flex'>
-        <button onClick={() => navigate("/")} type="submit" className="mt-4 px-4 py-2 bg-white border-blue-500 border-2 text-blue-500 rounded hover:bg-blue-200">
-          กลับ
-        </button>
-        {(parseFloat(amount) > 0 && parseFloat(amount) <= balance && parseFloat(amount) % 100 == 0) && (
-          <button type="submit" className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700" onClick={handleSubmit}>
-            ต่อไป
+
+      <div className=' absolute w-full flex justify-between px-8 pb-8 start-0 bottom-0'>
+        <div className='flex justify-center items-center gap-x-2'>
+          <button
+            onClick={() => navigate("/")} type="submit"
+            className="flex justify-center items-center rounded-full bg-red-500 h-8 w-8"
+          >
+            <RxCross2 className='text-xl text-white' />
           </button>
+          <span className='text-white'>ยกเลิก</span>
+        </div>
+
+        <></>
+
+        {(parseFloat(amount) > 0 && parseFloat(amount) <= balance && parseFloat(amount) % 100 == 0) ? (
+          <div className='flex justify-center items-center gap-x-2'>
+            <span className='text-white'>ต่อไป</span>
+            <button
+              onClick={handleSubmit}
+              className="flex justify-center items-center rounded-full bg-green-500 h-8 w-8"
+            >
+              <FaArrowRight className='text-xl text-white' />
+            </button>
+          </div>
+        ) : (
+          <div className='flex justify-center items-center gap-x-2'>
+            <span className='text-slate-400'>ต่อไป</span>
+            <button
+              className="flex justify-center items-center rounded-full bg-slate-500 h-8 w-8"
+            >
+              <FaArrowRight className='text-xl text-slate-300' />
+            </button>
+          </div>
         )}
       </div>
     </div>

@@ -7,7 +7,7 @@ import { UserContext } from '../../contexts/userContext';
 
 const CreatePin = () => {
 
-  const { getUserData } = useContext(UserContext);
+  const { getUserLocalStorage } = useContext(UserContext);
   const { POST_DATA_WITH_BODYPARAMS } = useDataFetch();
 
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const CreatePin = () => {
   const handleOnclick = async () => {
     const isPinValid = await validatePin();
     if(isPinValid === true){
-      const { email } = getUserData();
+      const { email } = getUserLocalStorage();
       const bodyParams = {
         email: email,
         pin: secondPin
@@ -57,7 +57,7 @@ const CreatePin = () => {
   return (
     <div className='text-black'>
 
-      <p className='text-xl px-2 font-bold text-left mt-8 text-white'>ตั้งค่า PIN สำหรับการทำธุรกรรม</p>
+      <p className='text-xl px-2 font-bold text-left -mt-4 text-white'>ตั้งค่า PIN สำหรับการทำธุรกรรม</p>
       <p className='text-xl px-2 font-bold text-left mt-1 text-orange-400'>ขั้นตอนสุดท้าย</p>
       <div className='absolute bg-white start-0 w-full px-4 mt-24 min-h-screen'>
         <div className=' bg-white w-full px-2 pb-2 rounded-lg drop-shadow-lg bottom-10 -mt-12'>
