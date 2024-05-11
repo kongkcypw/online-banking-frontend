@@ -24,7 +24,8 @@ const Login = () => {
     const response = await POST_DATA_WITH_BODYPARAMS('/login/password', bodyParams);
     if (response.status === 200) {
       console.log(response.message);
-      storeUser(response.email, response.userID);
+      console.log(response);
+      storeUser(response.email, response.userID, response.permissionLevel);
       navigate('/');
     }
     else if (response.status === 201) {

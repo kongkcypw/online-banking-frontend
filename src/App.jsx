@@ -32,6 +32,7 @@ import { PaymentProvider } from "./contexts/paymentContext";
 import PaymentConfirm from "./pages/payment/PaymentConfirm";
 import Welcome from "./Components/Home/Welcome";
 import Missing from "./pages/Missing";
+import EmpDashboard from "./pages/employee/EmpDashboard";
 
 function App() {
 
@@ -56,7 +57,7 @@ function App() {
             <Route path="/register/pin" element={<RegisterProvider><CreatePin /></RegisterProvider>} />
 
             {/* User only */}
-            <Route element={<RequireLogin />}>
+            <Route element={<RequireLogin allowedPermissions={[0]} />}>
               <Route path="/" element={<Home />} />
               <Route path="/auth-pin" element={<AuthPin />} />
 
@@ -74,9 +75,14 @@ function App() {
               </Route>
             </Route>
 
+            {/* Employee (Permission Level 1) */}
+            <Route element={<RequireLogin allowedPermissions={[1]} />}>
+              <Route path="/emp/dashboard" element={<EmpDashboard />} />
+            </Route>
+
             {/* catch all */}
-            <Route path="*" element={<Missing />}/>
-            
+            <Route path="*" element={<Missing />} />
+
           </Routes>
         </Router>
       </div>

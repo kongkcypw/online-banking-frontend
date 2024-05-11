@@ -59,7 +59,7 @@ const ConfirmRegister = () => {
     const response = await POST_DATA_WITH_BODYPARAMS('/register/confirm', bodyParams);
     console.log(response);
     if(response.status === 200){
-      storeUser(response.email, response.userID);
+      storeUser(response.email, response.userID, response.permissionLevel);
       navigate("/register/pin");
     }
   }
