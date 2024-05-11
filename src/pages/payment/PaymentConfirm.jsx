@@ -27,16 +27,16 @@ const PaymentConfirm = () => {
   const handleConfirmPayment = async () => {
     const bodyParams = {
       accountNumber: userAccountInfo.AccountNumber,
-      userID: userAccountInfo.UserID, 
-      transactionType: payType.toUpperCase(), 
-      destinationID: payDestID, 
-      amount: payAmount, 
-      description: payDescription, 
+      userID: userAccountInfo.UserID,
+      transactionType: payType.toUpperCase(),
+      destID: payDestID,
+      amount: parseFloat(payAmount),
+      description: payDescription,
       transactionFee: 0
     }
     console.log(bodyParams);
     const response = await POST_DATA_WITH_BODYPARAMS("/transaction/insert", bodyParams);
-    
+    console.log(response);
   }
 
 
@@ -49,6 +49,7 @@ const PaymentConfirm = () => {
             srcInfo={userAccountInfo}
             destType={payType}
             destInfo={payDestinationInfo}
+            payDestID={payDestID}
             payRequireInfo={payRequireInfo}
             payRequireInput={payRequireInput}
             payAmount={payAmount}
@@ -56,9 +57,10 @@ const PaymentConfirm = () => {
         </div>
       </div>
       <NextButton
-        previousPage={`/payment/${payDestID}`}
-        nextFuntion={() => handleConfirmPayment()} 
-        textColor={`text-black`}/>
+        previousPage={payType === "transfer" ? `/transfer` : `/payment/${payDestID}`}
+        nextFuntion={() => handleConfirmPayment()}
+        textColor={`text-black`}
+        isAllowNext={true} />
     </div>
   )
 }

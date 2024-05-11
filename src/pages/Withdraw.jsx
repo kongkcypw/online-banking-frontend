@@ -1,33 +1,39 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UserInfo from '../Components/Tranfer/UserInfo';
 
 import { FaArrowRight } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
+import { UserContext } from '../contexts/userContext';
 
 const MoneyNumber = [100, 200, 300, 400, 500, 900, 1000, 2000, 3000];
+
 const Withdraw = () => {
-  const [amount, setAmount] = useState(0);
+
+  const { userAccountInfo } = useContext(UserContext);
+
   const navigate = useNavigate();
+
+  const [amount, setAmount] = useState(0);
   const [amountCheck, setAmountCheck] = useState(false);
-  const [firstname, setFirstname] = useState('ชยุตม์');
-  const [lastname, setLastname] = useState('ขอดเมชัย');
-  const [useraccount, setUseraccount] = useState('4200000');
-  const [balance, setBalance] = useState(1000000.00);
   const [selectMoney, setSelectMoney] = useState(null);
+
   const handleInputChange = (event, setState) => {
     setState(event.target.value);
   };
+
   const handleClick = (amountButton, index) => {
     setAmount(amountButton);
     setAmountCheck(false);
     setSelectMoney(index);
   };
+
   const handleAmount = (index) => {
     setAmountCheck(true);
     setAmount(0);
     setSelectMoney(index);
   };
+
   const handleSubmit = () => {
     console.log(`Amount: ${amount}`);
   };
@@ -35,8 +41,8 @@ const Withdraw = () => {
   const MoneyButton = ({ amountButton, index }) => {
     return (
       <button
-        className={`text-white font-medium col-span-1 py-2 rounded-md bg-transparent border-2 border-white
-        hover:bg-orange-400 hover:bg-opacity-80 focus:outline-none`}
+        className={`text-white font-medium col-span-1 py-2 rounded-md border-2 border-white
+        ${selectMoney == index ? "bg-orange-400 bg-opacity-80" : "bg-transparent"}`}
         onClick={() => handleClick(amountButton, index)}>
 
         {amountButton}
@@ -48,10 +54,7 @@ const Withdraw = () => {
     <div className=' text-white'>
       <p className='text-left text-lg text-orange-400 mb-2'>สร้างรายการถอนเงินจากบัญชี</p>
       <div className='text-black'>
-        <UserInfo firstname={firstname}
-          lastname={lastname}
-          useraccount={useraccount}
-          balance={balance} />
+        <UserInfo />
       </div>
 
       <p className='mt-6 text-lg text-orange-400 text-left'>เลือกจำนวนเงิน</p>
@@ -59,7 +62,7 @@ const Withdraw = () => {
         {MoneyNumber.map((number, index) => (
           <MoneyButton amountButton={number} key={index} index={index} />
         ))}
-        <button className={`text-white font-medium border-2 border-white col-span-1  rounded-md hover:bg-orange-400 duration-100 hover:bg-opacity-80 ${selectMoney === 9 ? "bg-orange-400" : "bg-transparent"}`} onClick={() => handleAmount(9)}>
+        <button className={`text-white font-medium border-2 border-white col-span-1  rounded-md ${selectMoney === 9 ? "bg-orange-400 bg-opacity-80" : "bg-transparent"}`} onClick={() => handleAmount(9)}>
           เลือกจำนวนเงิน
         </button>
       </div>
@@ -94,7 +97,7 @@ const Withdraw = () => {
 
         <></>
 
-        {(parseFloat(amount) > 0 && parseFloat(amount) <= balance && parseFloat(amount) % 100 == 0) ? (
+        {(userAccountInfo && parseFloat(amount) > 0 && parseFloat(amount) <= userAccountInfo.Balance && parseFloat(amount) % 100 == 0) ? (
           <div className='flex justify-center items-center gap-x-2'>
             <span className='text-white'>ต่อไป</span>
             <button

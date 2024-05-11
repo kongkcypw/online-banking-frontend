@@ -5,20 +5,25 @@ import { FaRegBell } from "react-icons/fa6";
 import { FaArrowLeft } from "react-icons/fa6";
 
 import { useLocation, Link } from "react-router-dom";
+import { UserContext } from "../../contexts/userContext";
 
 
 const TopbarWithBack = () => {
+
+    const { isAuthPinSuccess } = useContext(UserContext)
+
     const location = useLocation();
+    const isWelcome = location.pathname === "/welcome";
     const isHome = location.pathname === "/";
-    const isOverall = location.pathname === "/overall";
-    const isTopUp = location.pathname === "/topup";
-    const isTransfer = location.pathname === "/transfer";
-    const isWithdraw = location.pathname === "/withdraw";
-    const isBill = location.pathname === "/bill";
+    const isOverall = location.pathname === "/overall" && isAuthPinSuccess === true;
+    const isTopUp = location.pathname === "/topup" && isAuthPinSuccess === true;
+    const isTransfer = location.pathname === "/transfer" && isAuthPinSuccess === true;
+    const isWithdraw = location.pathname === "/withdraw" && isAuthPinSuccess === true;
+    const isBill = location.pathname === "/bill" && isAuthPinSuccess === true;
     const isRegister = location.pathname === "/register/user" || location.pathname === "/register/info" || location.pathname === "/register/account" || location.pathname === "/register/confirm" || location.pathname === "/register/pin"
 
     return (
-        <div className={`fixed ${(isHome || isOverall || isRegister) ? " hidden" : "block"} w-full top-0 start-0 py-2 pt-3 z-10 bg-gradient-to-r from-slate-700 to-slate-800`}>
+        <div className={`fixed ${(isHome || isOverall || isRegister || isWelcome) ? " hidden" : "block"} w-full top-0 start-0 py-2 pt-3 z-10 bg-gradient-to-r from-slate-700 to-slate-800`}>
             <div className="grid grid-cols-3 items-center">
                 <Link to="/">
                     <button 

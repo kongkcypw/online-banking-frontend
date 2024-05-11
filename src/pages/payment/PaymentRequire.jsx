@@ -94,7 +94,8 @@ const PaymentRequire = () => {
                 ? <NextButton 
                     previousPage={`/${payType}`}
                     nextFuntion={validateInput}
-                    textColor={"text-white"}/>
+                    textColor={"text-white"}
+                    isAllowNext={true}/>
                 : null}
 
         </div>

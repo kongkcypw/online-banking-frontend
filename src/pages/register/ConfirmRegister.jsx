@@ -52,6 +52,7 @@ const ConfirmRegister = () => {
       account: {
         branchNumber: regBranchNumber,
         branchID: regClosestBranchID,
+        bankID: "BK0001",
         balance: regBalance
       }
     }
