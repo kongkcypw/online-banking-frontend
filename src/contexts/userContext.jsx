@@ -17,7 +17,6 @@ const UserProvider = ({ children }) => {
     // Check current token is expired
     const authTokenInStorage = async() => {
         const data = JSON.parse(window.localStorage.getItem(import.meta.env.VITE_LOCAL_STORAGE_NAME));
-        console.log(data);
         const bodyParams = {
             token: data.token
         }
@@ -54,7 +53,7 @@ const UserProvider = ({ children }) => {
     }
 
     // Check user login (email exist in local storage)
-    const checkUserLogin = () => {
+    const checkUserLogin = async () => {
         const data = JSON.parse(window.localStorage.getItem(import.meta.env.VITE_LOCAL_STORAGE_NAME));
         if (data && data.email.length > 0) {
             setIsLogedIn(true);
@@ -86,6 +85,7 @@ const UserProvider = ({ children }) => {
             }
         }
         window.localStorage.setItem(import.meta.env.VITE_LOCAL_STORAGE_NAME, JSON.stringify(data));
+        setIsLogedIn(true);
     }
 
     // Get email and userID

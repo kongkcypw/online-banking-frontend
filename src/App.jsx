@@ -5,6 +5,8 @@ import "./App.css";
 import { UserContext } from "./contexts/userContext";
 import { RegisterProvider } from "./contexts/registerContext";
 import { useContext } from "react";
+import RequireLogin from "./Components/Auth/RequireLogin";
+import RequirePin from "./Components/Auth/RequirePin";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -28,9 +30,11 @@ import Statement from "./pages/Statement";
 import PaymentRequire from "./pages/payment/PaymentRequire";
 import { PaymentProvider } from "./contexts/paymentContext";
 import PaymentConfirm from "./pages/payment/PaymentConfirm";
+import Welcome from "./Components/Home/Welcome";
+import Missing from "./pages/Missing";
 
 function App() {
-  
+
   const { isAuthPinSuccess } = useContext(UserContext);
 
   return (
@@ -41,26 +45,38 @@ function App() {
           <TopbarWithBack />
           <NavBar />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
 
+            {/* Public */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/welcome" element={<Welcome />} />
             <Route path="/register/user" element={<RegisterProvider><RegisterUser /></RegisterProvider>} />
             <Route path="/register/info" element={<RegisterProvider><CreateAccount /></RegisterProvider>} />
             <Route path="/register/account" element={<RegisterProvider><RegisterAccount /></RegisterProvider>} />
             <Route path="/register/confirm" element={<RegisterProvider><ConfirmRegister /></RegisterProvider>} />
             <Route path="/register/pin" element={<RegisterProvider><CreatePin /></RegisterProvider>} />
 
-            <Route path="/transfer" element={isAuthPinSuccess ? <Tranfer /> : <AuthPin/>} />
-            <Route path="/topup" element={isAuthPinSuccess ? <Topup /> : <AuthPin/>} />
-            <Route path="/bill" element={isAuthPinSuccess ? <Bill /> : <AuthPin/>} />
-            <Route path="/withdraw" element={isAuthPinSuccess ? <Withdraw /> : <AuthPin/>} />
-            
-            <Route path="/overall" element={isAuthPinSuccess ? <Overall /> : <AuthPin/>} />
-            <Route path="/profile" element={isAuthPinSuccess ? <Profile />  : <AuthPin/>} />
-            <Route path="/statement" element={isAuthPinSuccess ?<Statement /> : <AuthPin/>} />
+            {/* User only */}
+            <Route element={<RequireLogin />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/auth-pin" element={<AuthPin />} />
 
-            <Route path="/payment/:destid" element={<PaymentProvider><PaymentRequire /></PaymentProvider>} />
-            <Route path="/payment-confirm" element={<PaymentProvider><PaymentConfirm /></PaymentProvider>} />
+              {/* Require pin for transaction and personal information */}
+              <Route element={<RequirePin />}>
+                <Route path="/transfer" element={<PaymentProvider><Tranfer /></PaymentProvider>} />
+                <Route path="/payment/:destid" element={<PaymentProvider><PaymentRequire /></PaymentProvider>} />
+                <Route path="/payment-confirm" element={<PaymentProvider><PaymentConfirm /></PaymentProvider>} />
+                <Route path="/topup" element={<Topup />} />
+                <Route path="/bill" element={<Bill />} />
+                <Route path="/withdraw" element={<Withdraw />} />
+                <Route path="/overall" element={<Overall />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/statement" element={<Statement />} />
+              </Route>
+            </Route>
+
+            {/* catch all */}
+            <Route path="*" element={<Missing />}/>
+            
           </Routes>
         </Router>
       </div>

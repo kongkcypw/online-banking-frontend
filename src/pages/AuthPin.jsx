@@ -1,13 +1,15 @@
-import React, { useState, useEffect, useContext, useLayoutEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useDataFetch } from '../hooks/useDataFetch';
 import { UserContext } from '../contexts/userContext';
 import Loading from '../Components/Global/Loading';
 import Numpad from '../Components/Pin/Numpad';
 import PinCounter from '../Components/Pin/PinCounter';
+import AlertModal from '../Components/Global/AlertModal';
+import ForgotPin from '../Components/Pin/ForgotPin';
 
 const AuthPin = () => {
 
-    const { isAuthPinSuccess, setIsAuthPinSuccess, storeToken, authTokenInStorage, authNewToken } = useContext(UserContext);
+    const { isAuthPinSuccess, authTokenInStorage, authNewToken } = useContext(UserContext);
 
     const { POST_DATA_WITH_BODYPARAMS } = useDataFetch();
 
@@ -28,7 +30,6 @@ const AuthPin = () => {
             pin: pin
         }
         const auth_pin_response = await POST_DATA_WITH_BODYPARAMS('/login/pin', bodyParams);
-        console.log(auth_pin_response);
 
         if (auth_pin_response.status === 200) {
             // Auth token
@@ -69,7 +70,6 @@ const AuthPin = () => {
         if (pin && pin.length >= 6) {
             handleAuthPin();
         }
-        console.log(pin);
     }, [pin])
 
     return (
@@ -77,11 +77,21 @@ const AuthPin = () => {
             {isAuthPinSuccess === null
                 ? <Loading />
                 : <>
-                    <p className="text-center text-2xl font-medium pt-20">กรุณาใส่รหัสผ่าน</p>
-                    <PinCounter fillAmount={pin.length}/>
+                    <p className="text-center text-2xl font-medium pt-14">กรุณาใส่รหัสผ่าน</p>
+                    <PinCounter fillAmount={pin.length} />
                     <Numpad handleNumpadClick={handleNumpadClick} />
+                    <ForgotPin />
                 </>
             }
+            {warning === true ?
+                <AlertModal
+                    isDisplay={warning}
+                    headerMessage={`ขออภัย ${warningMessage}`}
+                    bodyMassage={"โปรดระบุ PIN ของท่านอีกครั้ง"}
+                    handleCancle={() => setWarning(false)}
+                    handleOk={() => setWarning(false)} 
+                    className="text-black"/>
+                : null}
         </div>
     )
 }

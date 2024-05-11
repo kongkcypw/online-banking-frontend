@@ -6,11 +6,11 @@ import { IoPersonSharp } from "react-icons/io5";
 import { UserContext } from "../../contexts/userContext";
 
 const NavBar = () => {
-  const { isLogedIn } = useContext(UserContext);
+  const { isLogedIn, isAuthPinSuccess } = useContext(UserContext);
 
   const location = useLocation();
   const isHome = location.pathname === "/" && isLogedIn === true;
-  const isOverall = location.pathname === "/overall";
+  const isOverall = location.pathname === "/overall" && isAuthPinSuccess === true;
 
   return (
     <div

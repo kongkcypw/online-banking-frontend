@@ -5,7 +5,7 @@ const PaymentProvider = ({ children }) => {
 
     // URL Param
     const [payType, setPayType] = useState(null);
-    const [payDestID, setPayDestID] = useState(null);
+    const [payDestID, setPayDestID] = useState('');
     // DB SQL
     const [payDestinationInfo, setDestinationInfo] = useState(null);
     const [payRequireInfo, setPayRequireInfo] = useState(null);

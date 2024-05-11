@@ -3,29 +3,26 @@ import UrgentTransaction from '../Components/Home/UrgentTransaction'
 import QuickBalance from '../Components/Home/QuickBalance'
 import Favorites from '../Components/Home/Favorites'
 import Welcome from '../Components/Home/Welcome'
-import { UserContext } from '../contexts/userContext'
+import useAuth from '../hooks/useAuth'
+import Loading from '../Components/Global/Loading'
 
 const Home = () => {
 
-  const { checkUserLogin, isLogedIn, userAccountInfo, getAccountInfo } = useContext(UserContext);
+  const { userAccountInfo, getAccountInfo } = useAuth();
 
   useEffect(() => {
-    checkUserLogin()
     getAccountInfo()
   }, [])
 
   return (
     <>
-      {(isLogedIn && userAccountInfo)
+      {(userAccountInfo)
         ? <div className="w-full h-screen">
           <UrgentTransaction />
-          <QuickBalance info={userAccountInfo}/>
+          <QuickBalance info={userAccountInfo} />
           <Favorites />
         </div>
-        : <div className="w-full h-screen">
-          <Welcome />
-        </div>}
-
+        : <Loading />}
     </>
   )
 }
