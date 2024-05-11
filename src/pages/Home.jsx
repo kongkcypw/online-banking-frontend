@@ -8,11 +8,7 @@ import Loading from '../Components/Global/Loading'
 
 const Home = () => {
 
-  const { userAccountInfo, getAccountInfo } = useAuth();
-
-  useEffect(() => {
-    getAccountInfo()
-  }, [])
+  const { userAccountInfo } = useAuth();
 
   return (
     <>

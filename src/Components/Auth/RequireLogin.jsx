@@ -7,7 +7,7 @@ import PermissionDenied from '../../pages/PermissionDenied';
 const RequireLogin = ({ allowedPermissions }) => {
 
     const location = useLocation();
-    const { isLogedIn, checkUserLogin, permissionLevel } = useAuth();
+    const { isLogedIn, getAccountInfo, checkUserLogin, permissionLevel } = useAuth();
 
     const [waitCheckUser, setWaitCheckUser] = useState(false);
 
@@ -17,6 +17,7 @@ const RequireLogin = ({ allowedPermissions }) => {
 
     const checkUser = async () => {
         await checkUserLogin();
+        getAccountInfo();
         setWaitCheckUser(true);
     }
 

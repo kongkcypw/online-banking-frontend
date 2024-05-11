@@ -3,9 +3,10 @@ import { useDataFetch } from '../hooks/useDataFetch';
 import { useEffect } from 'react';
 import TopUpChoice from '../Components/Topup/TopUpChoice'
 import AccountDetail from '../Components/Topup/AccountDetail';
+import Loading from '../Components/Global/Loading';
 
 const Topup = () => {
-    const [TopupData, setTopupData] = useState()
+    const [TopupData, setTopupData] = useState([])
     const { GET_DATA } = useDataFetch();
 
     useEffect(() => {
@@ -21,10 +22,11 @@ const Topup = () => {
         <div>
             <AccountDetail />
             <p className='text-orange-400 text-md text-left mt-6'>ไปยัง</p>
-            {TopupData &&
-                <div className='absolute bg-white w-full h-full left-0 mt-2 rounded-md'>
+            {TopupData
+                ? <div className='absolute bg-white w-full h-full left-0 mt-2 rounded-md'>
                     <TopUpChoice TopupData={TopupData} />
                 </div>
+                : <Loading />
             }
 
         </div>

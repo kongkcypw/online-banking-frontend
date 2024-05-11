@@ -23,19 +23,19 @@ const BillChoice = ({ BillData }) => {
             </div>
             <div className="mt-4 w-auto flex-col justify-center mx-4">
                 {uniqueGroupTypes.map((group, index) => (
-                    <div>
-                        <div key={index} className="bg-orange-300 rounded-md">
+                    <div key={index}>
+                        <div className="bg-orange-300 rounded-md">
                             {group}
                         </div>
                         <ul>
                             {BillData.filter(item => item.Type === group)
                                 .map((item, itemIndex) => (
-                                    <div onClick={() => handleClick(item.BillID)} className="text-left flex items-center py-2 border-b border-gray-200 gap-x-4 hover:bg-slate-200">
+                                    <div key={itemIndex} onClick={() => handleClick(item.BillID)} className="text-left flex items-center py-2 border-b border-gray-200 gap-x-4 hover:bg-slate-200">
                                         <div className="border border-slate-300 bg-white h-11 w-11 rounded-full flex justify-center items-center">
                                             <img className="h-auto w-auto rounded-full" src={item.Image} />
                                         </div>
                                         <div>
-                                            <div key={itemIndex} >
+                                            <div>
                                                 {item.Name}
                                             </div>
                                         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { PiUserListLight } from "react-icons/pi";
 
-const UserInfoStatement = () => {
+const UserInfoStatement = ({ info }) => {
     return (
         <div className="grid grid-cols-4">
             <div className="col-span-1">
@@ -12,14 +12,14 @@ const UserInfoStatement = () => {
             <div className=" col-span-3">
                 <div className="flex-col text-left">
                     <p className="text-orange-400 text-lg">บัญชีของฉัน</p>
-                    <p className="text-white text-xs">XXX-X-X0000-X</p>
+                    <p className="text-white text-xs">XXX-X-X{info.AccountNumber.slice(5,9)}-X</p>
                     <div className="flex justify-between mt-1">
                         <p className="text-white text-sm">ยอดเงินที่ใช้ได้</p>
-                        <p className="text-white text-sm"> 100000.00 </p>
+                        <p className="text-white text-sm"> {info.Balance} </p>
                     </div>
                     <div className="flex justify-between mt-1">
                         <p className="text-white text-sm">ยอดเงินในบัญชี</p>
-                        <p className="text-white text-sm"> 100000.00 </p>
+                        <p className="text-white text-sm"> {info.Balance} </p>
                     </div>
                 </div>
             </div>

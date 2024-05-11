@@ -13,6 +13,7 @@
     "antd": "^5.16.5",
     "axios": "^1.6.8",
     "dotenv": "^16.4.5",
+    "moment-timezone": "^0.5.45",
     "react": "^18.2.0",
     "react-currency-input-field": "^3.8.0",
     "react-dom": "^18.2.0",

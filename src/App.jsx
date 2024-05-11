@@ -33,6 +33,7 @@ import PaymentConfirm from "./pages/payment/PaymentConfirm";
 import Welcome from "./Components/Home/Welcome";
 import Missing from "./pages/Missing";
 import EmpDashboard from "./pages/employee/EmpDashboard";
+import PaymentSuccess from "./pages/payment/PaymentSuccess";
 
 function App() {
 
@@ -56,7 +57,7 @@ function App() {
             <Route path="/register/confirm" element={<RegisterProvider><ConfirmRegister /></RegisterProvider>} />
             <Route path="/register/pin" element={<RegisterProvider><CreatePin /></RegisterProvider>} />
 
-            {/* User only */}
+            {/* Role: User (Permission Level 0) */}
             <Route element={<RequireLogin allowedPermissions={[0]} />}>
               <Route path="/" element={<Home />} />
               <Route path="/auth-pin" element={<AuthPin />} />
@@ -66,6 +67,7 @@ function App() {
                 <Route path="/transfer" element={<PaymentProvider><Tranfer /></PaymentProvider>} />
                 <Route path="/payment/:destid" element={<PaymentProvider><PaymentRequire /></PaymentProvider>} />
                 <Route path="/payment-confirm" element={<PaymentProvider><PaymentConfirm /></PaymentProvider>} />
+                <Route path="/payment-success" element={<PaymentProvider><PaymentSuccess /></PaymentProvider>} />
                 <Route path="/topup" element={<Topup />} />
                 <Route path="/bill" element={<Bill />} />
                 <Route path="/withdraw" element={<Withdraw />} />
@@ -75,7 +77,7 @@ function App() {
               </Route>
             </Route>
 
-            {/* Employee (Permission Level 1) */}
+            {/* Role: Employee (Permission Level 1) */}
             <Route element={<RequireLogin allowedPermissions={[1]} />}>
               <Route path="/emp/dashboard" element={<EmpDashboard />} />
             </Route>
