@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth'
 import Loading from '../Global/Loading';
+import PermissionDenied from '../../pages/PermissionDenied';
 
-const RequireLogin = () => {
+const RequireLogin = ({ allowedPermissions }) => {
 
     const location = useLocation();
-    const { isLogedIn, checkUserLogin } = useAuth();
+    const { isLogedIn, checkUserLogin, permissionLevel } = useAuth();
 
     const [waitCheckUser, setWaitCheckUser] = useState(false);
 
@@ -22,9 +23,11 @@ const RequireLogin = () => {
     return (
         (waitCheckUser === false)
             ? <Loading />
-            : (isLogedIn)
+            : (allowedPermissions.includes(permissionLevel))
                 ? <Outlet />
-                : <Navigate to="/welcome" state={{ from: location }} replace />
+                : (isLogedIn)
+                    ? <PermissionDenied />
+                    : <Navigate to="/welcome" state={{ from: location }} replace />
     );
 }
 

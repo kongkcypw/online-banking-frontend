@@ -8,9 +8,9 @@ const UserProvider = ({ children }) => {
 
     const [userEmail, setUserEmail] = useState(null);
     const [userID, setUserID] = useState(null);
-    const [userToken, setUserToken] = useState(null);
     const [userAccountInfo, setUserAccountInfo] = useState(null);
 
+    const [permissionLevel , setPermissionLevel] = useState(null);
     const [isLogedIn, setIsLogedIn] = useState(false);
     const [isAuthPinSuccess, setIsAuthPinSuccess] = useState(null);
 
@@ -57,9 +57,11 @@ const UserProvider = ({ children }) => {
         const data = JSON.parse(window.localStorage.getItem(import.meta.env.VITE_LOCAL_STORAGE_NAME));
         if (data && data.email.length > 0) {
             setIsLogedIn(true);
+            setPermissionLevel(data.permissionLevel);
         }
         else {
             setIsLogedIn(false);
+            setPermissionLevel(null)
         }
     }
 
@@ -71,17 +73,20 @@ const UserProvider = ({ children }) => {
     }
 
     // Store email to local storage
-    const storeUser = (email, userID) => {
+    const storeUser = (email, userID, permission) => {
         let data = JSON.parse(window.localStorage.getItem(import.meta.env.VITE_LOCAL_STORAGE_NAME));
         if(data){
             data.email = email;
             data.userID = userID;
+            data.token = '';
+            data.permissionLevel = permission;
         }
         else{
             data = {
                 email: email,
                 userID: userID,
-                token: ''
+                token: '',
+                permissionLevel: permission
             }
         }
         window.localStorage.setItem(import.meta.env.VITE_LOCAL_STORAGE_NAME, JSON.stringify(data));
@@ -96,7 +101,7 @@ const UserProvider = ({ children }) => {
             setUserID(data.userID)
             const email = data.email;
             const uid = data.userID
-            return {email, uid }
+            return { email, uid }
         }
         else{
             return
@@ -121,6 +126,7 @@ const UserProvider = ({ children }) => {
     }
 
     const value = {
+        permissionLevel,
         authTokenInStorage,
         authNewToken,
         checkUserLogin,

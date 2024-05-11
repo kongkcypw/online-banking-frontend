@@ -10,7 +10,7 @@ import { UserContext } from "../../contexts/userContext";
 
 const TopbarWithBack = () => {
 
-    const { isAuthPinSuccess } = useContext(UserContext)
+    const { isAuthPinSuccess, permissionLevel } = useContext(UserContext)
 
     const location = useLocation();
     const isWelcome = location.pathname === "/welcome";
@@ -22,8 +22,11 @@ const TopbarWithBack = () => {
     const isBill = location.pathname === "/bill" && isAuthPinSuccess === true;
     const isRegister = location.pathname === "/register/user" || location.pathname === "/register/info" || location.pathname === "/register/account" || location.pathname === "/register/confirm" || location.pathname === "/register/pin"
 
+    const splitPathName = location.pathname.split("/");
+    const isEmployee = splitPathName[1] === "emp"
+
     return (
-        <div className={`fixed ${(isHome || isOverall || isRegister || isWelcome) ? " hidden" : "block"} w-full top-0 start-0 py-2 pt-3 z-10 bg-gradient-to-r from-slate-700 to-slate-800`}>
+        <div className={`fixed ${(isHome || isOverall || isRegister || isWelcome || isEmployee) ? " hidden" : "block"} w-full top-0 start-0 py-2 pt-3 z-10 bg-gradient-to-r from-slate-700 to-slate-800`}>
             <div className="grid grid-cols-3 items-center">
                 <Link to="/">
                     <button 
