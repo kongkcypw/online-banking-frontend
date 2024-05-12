@@ -31,6 +31,7 @@ import PaymentConfirm from "./pages/payment/PaymentConfirm";
 import Welcome from "./Components/Home/Welcome";
 import Missing from "./pages/Missing";
 import EmpDashboard from "./pages/employee/EmpDashboard";
+import ContactBank from "./pages/ContactBank";
 
 function App() {
 
@@ -68,6 +69,7 @@ function App() {
                 <Route path="/overall" element={<Overall />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/statement" element={<Statement />} />
+                <Route path="/contact-bank" element={<ContactBank />} />
               </Route>
             </Route>
 
