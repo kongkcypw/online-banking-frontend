@@ -21,6 +21,7 @@ const TopbarWithBack = () => {
     const isWithdraw = location.pathname === "/withdraw" && isAuthPinSuccess === true;
     const isBill = location.pathname === "/bill" && isAuthPinSuccess === true;
     const isRegister = location.pathname === "/register/user" || location.pathname === "/register/info" || location.pathname === "/register/account" || location.pathname === "/register/confirm" || location.pathname === "/register/pin"
+    const isContact = location.pathname ==="/contact-bank"
 
     const splitPathName = location.pathname.split("/");
     const isEmployee = splitPathName[1] === "emp"
@@ -40,6 +41,7 @@ const TopbarWithBack = () => {
                         {isTopUp && "เติมเงิน"}
                         {isWithdraw && "ถอนเงิน"}
                         {isBill && "จ่ายบิล"}
+                        {isContact && "ติดต่อธนาคาร"}
                     </p>
                 </div>
                 <div className="col-span-1" />
