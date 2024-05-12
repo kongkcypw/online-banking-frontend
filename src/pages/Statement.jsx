@@ -11,9 +11,11 @@ const Statement = () => {
     const { POST_DATA_WITH_BODYPARAMS } = useDataFetch();
 
     const [transactionData, setTransactionData] = useState();
+    const [previousMonth, setPreviousMonth] = useState();
 
     useEffect(() => {
         fetchTransactionData();
+        getPreviousMonth();
     }, [])
 
     const fetchTransactionData = async () => {
@@ -26,15 +28,42 @@ const Statement = () => {
         } catch (error) {
 
         }
+    }
 
+    const getThaiMonthName = (month) => {
+        const thaiMonths = [
+            "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+            "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+        ];
+        return thaiMonths[month];
+    };
+
+    const getPreviousMonth = () => {
+        const currentDate = new Date();
+        const latest6Months = [];
+        for (let i = 0; i < 6; i++) {
+            let month = currentDate.getMonth() - i;
+            let year = currentDate.getFullYear();
+            if (month < 0) {
+                month += 12;
+                year--;
+            }
+            const thaiMonthName = getThaiMonthName(month);
+            const yearString = (parseInt(year) + 543).toString().slice(-2);
+            const dateString = `${thaiMonthName} ${yearString}`;
+            latest6Months.push(dateString);
+        }
+        setPreviousMonth(latest6Months);
     }
 
     return (
         <div className="-mt-2">
-            {transactionData
+            {(transactionData && previousMonth)
                 ? <div>
-                    <UserInfoStatement info={userAccountInfo}/>
-                    <StatmentList transactionData={transactionData}/>
+                    <UserInfoStatement info={userAccountInfo} />
+                    <StatmentList
+                        transactionData={transactionData}
+                        previousMonth={previousMonth} />
                 </div>
                 : <Loading />
             }
