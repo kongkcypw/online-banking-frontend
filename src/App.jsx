@@ -2,9 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 
-import { UserContext } from "./contexts/userContext";
 import { RegisterProvider } from "./contexts/registerContext";
-import { useContext } from "react";
 import RequireLogin from "./Components/Auth/RequireLogin";
 import RequirePin from "./Components/Auth/RequirePin";
 
@@ -33,11 +31,8 @@ import PaymentConfirm from "./pages/payment/PaymentConfirm";
 import Welcome from "./Components/Home/Welcome";
 import Missing from "./pages/Missing";
 import EmpDashboard from "./pages/employee/EmpDashboard";
-import PaymentSuccess from "./pages/payment/PaymentSuccess";
 
 function App() {
-
-  const { isAuthPinSuccess } = useContext(UserContext);
 
   return (
     <>
@@ -67,7 +62,6 @@ function App() {
                 <Route path="/transfer" element={<PaymentProvider><Tranfer /></PaymentProvider>} />
                 <Route path="/payment/:destid" element={<PaymentProvider><PaymentRequire /></PaymentProvider>} />
                 <Route path="/payment-confirm" element={<PaymentProvider><PaymentConfirm /></PaymentProvider>} />
-                <Route path="/payment-success" element={<PaymentProvider><PaymentSuccess /></PaymentProvider>} />
                 <Route path="/topup" element={<Topup />} />
                 <Route path="/bill" element={<Bill />} />
                 <Route path="/withdraw" element={<Withdraw />} />
