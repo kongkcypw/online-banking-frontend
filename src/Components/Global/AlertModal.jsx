@@ -3,7 +3,7 @@ import { CiCircleAlert } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
 import { IoCheckmark } from "react-icons/io5";
 
-const AlertModal = ({ icon, headerMessage, bodyMassage, isDisplay, handleCancle, handleOk }) => {
+const AlertModal = ({ icon, headerMessage, bodyMassage, isDisplay, handleCancle, handleOk, textCancle, textOk }) => {
   return (
     <>
       {isDisplay === true ?
@@ -27,11 +27,11 @@ const AlertModal = ({ icon, headerMessage, bodyMassage, isDisplay, handleCancle,
                   >
                     <RxCross2 className='text-xl text-white' />
                   </button>
-                  <span className='text-black'>ไม่</span>
+                  <span className='text-black'>{textCancle || "ไม่"}</span>
                 </div>
                 <></>
                 <div className='flex justify-center items-center gap-x-2'>
-                  <span className='text-black'>ใช่</span>
+                  <span className='text-black'>{textOk || "ใช่"}</span>
                   <button
                     className="flex justify-center items-center rounded-full bg-green-500 h-8 w-8"
                     onClick={handleOk} type="submit"
