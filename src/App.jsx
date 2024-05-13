@@ -32,6 +32,8 @@ import Welcome from "./Components/Home/Welcome";
 import Missing from "./pages/Missing";
 import EmpDashboard from "./pages/employee/EmpDashboard";
 import ContactBank from "./pages/ContactBank";
+import { WithDrawProvider } from "./contexts/withdrawContext";
+import WithDrawConfirm from "./pages/payment/WithDrawConfirm";
 
 function App() {
 
@@ -65,7 +67,8 @@ function App() {
                 <Route path="/payment-confirm" element={<PaymentProvider><PaymentConfirm /></PaymentProvider>} />
                 <Route path="/topup" element={<Topup />} />
                 <Route path="/bill" element={<Bill />} />
-                <Route path="/withdraw" element={<Withdraw />} />
+                <Route path="/withdraw" element={<WithDrawProvider><Withdraw /></WithDrawProvider>} />
+                <Route path="/withdraw-confirm" element={<WithDrawProvider><WithDrawConfirm /></WithDrawProvider>} />
                 <Route path="/overall" element={<Overall />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/statement" element={<Statement />} />
