@@ -35,7 +35,7 @@ const Topbar = () => {
                 <div className="col-span-1 flex justify-center items-center">
                     <img 
                     src="https://i.ibb.co/MyHVMps/Krungthon-Previous-Pure.png"
-                    className="h-6 w-7"
+                    className="h-5 "
                     />
                     
                 </div>

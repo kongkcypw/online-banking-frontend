@@ -56,7 +56,7 @@ function App() {
             <Route path="/register/pin" element={<RegisterProvider><CreatePin /></RegisterProvider>} />
 
             {/* Role: User (Permission Level 0) */}
-            <Route element={<RequireLogin allowedPermissions={[0]} />}>
+            <Route element={<RequireLogin allowedPermissions={[0,1]} />}>
               <Route path="/" element={<Home />} />
               <Route path="/auth-pin" element={<AuthPin />} />
 
