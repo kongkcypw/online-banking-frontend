@@ -7,6 +7,8 @@ import PayFlow from '../../Components/Payment/PayFlow';
 import { useDataFetch } from '../../hooks/useDataFetch';
 import AlertModal from '../../Components/Global/AlertModal';
 import { useNavigate } from 'react-router-dom';
+import Notify from '../../Components/Global/Notify';
+import BackButton from '../../Components/Payment/BackButton';
 
 const PaymentConfirm = () => {
 
@@ -35,24 +37,24 @@ const PaymentConfirm = () => {
     try {
       const bodyParams = {
         accountNumber: userAccountInfo.AccountNumber,
-        // userID: userAccountInfo.UserID,
-        // transactionType: payType.toUpperCase(),
-        // destID: payDestID,
-        // amount: parseFloat(payAmount),
-        // description: payDescription,
-        // transactionFee: 0
+        userID: userAccountInfo.UserID,
+        transactionType: payType.toUpperCase(),
+        destID: payDestID,
+        amount: parseFloat(payAmount),
+        description: payDescription,
+        transactionFee: 0
       }
       const response = await POST_DATA_WITH_BODYPARAMS("/transaction/insert", bodyParams);
       console.log(response);
       setIsPaymentSuccess(true)
     } catch (error) {
       console.log(error.response.status)
-      // setIsPaymentSuccess(false)
+      setIsPaymentSuccess(false)
       // await bouceNotification();
     }
   }
 
-  const bouceNotification = async() => {
+  const bouceNotification = async () => {
     setStartBouceAnimate(true)
     setTimeout(() => {
       setStartBouceAnimate(false);
@@ -82,13 +84,18 @@ const PaymentConfirm = () => {
           textColor={`text-black`}
           isAllowNext={true} />
       }
-      {/* {(isPaymentSuccess !== null && isPaymentSuccess === true) */}
-      {/* {(isPaymentSuccess === null)
-        ? <div className={`absolute bg-white start-[9px] top-2 z-50 h-16 w-[95%] rounded-xl
-                            ${startBouceAnimate === true ? " " :" "}`}>
-            <p className='text-black my-auto'>dff</p>
-        </div>
-        : <AlertModal />} */}
+      {
+        (isPaymentSuccess !== null && isPaymentSuccess === true)
+          ?
+          <div>
+            <Notify
+              AccountNumber={userAccountInfo.AccountNumber}
+              Amount={payAmount}
+            />
+            <BackButton BackHome={"/"} BackAgain={"/topup"}/>
+          </div>
+
+          : <AlertModal />}
     </div>
   )
 }

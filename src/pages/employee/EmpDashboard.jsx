@@ -1,10 +1,12 @@
 import React from 'react'
 import EmpNavBar from './EmpNavBar'
+import Notify from '../../Components/Global/Notify'
 
 const EmpDashboard = () => {
   return (
     <div className='absolute bg-[#202A34] w-full h-full start-0 top-0 pt-4 px-6 mt-8'>
       <EmpNavBar/>
+      <Notify/>
       <h1 className='text-left font-bold text-white mb-4 text-xl'>Dashboard</h1>
       <div className='grid grid-cols-6 gap-x-8'>
         {/* Column 1*/}
