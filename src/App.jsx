@@ -34,6 +34,8 @@ import EmpDashboard from "./pages/employee/EmpDashboard";
 import ContactBank from "./pages/ContactBank";
 import { WithDrawProvider } from "./contexts/withdrawContext";
 import WithDrawConfirm from "./pages/payment/WithDrawConfirm";
+import SummaryStatement from "./pages/SummaryStatement";
+import Favorite from "./pages/Favorite";
 
 function App() {
 
@@ -69,9 +71,11 @@ function App() {
                 <Route path="/bill" element={<Bill />} />
                 <Route path="/withdraw" element={<WithDrawProvider><Withdraw /></WithDrawProvider>} />
                 <Route path="/withdraw-confirm" element={<WithDrawProvider><WithDrawConfirm /></WithDrawProvider>} />
+                <Route path="/favorite" element={<Favorite />} />
                 <Route path="/overall" element={<Overall />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/statement" element={<Statement />} />
+                <Route path="/summary-statement" element={<SummaryStatement />} />
                 <Route path="/contact-bank" element={<ContactBank />} />
               </Route>
             </Route>

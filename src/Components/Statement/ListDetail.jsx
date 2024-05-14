@@ -36,7 +36,7 @@ const ListDetail = ({ transactionEachDay, date, time_options, dateGroupIndex, ha
                         <FlowDirection 
                             Flow={transaction.TransactionFlow}
                             Type={transaction.TransactionType}/>
-                        <p className={` font-medium ${transaction.TransactionFlow === "OUT" ? "text-red-600" : "text-green-600"}`}>
+                        <p className={` font-medium ${transaction.TransactionFlow === "OUT" ? "text-[#D64739]" : "text-[#45C2B4]"}`}>
                             {transaction.Amount}
                         </p>
                     </div>

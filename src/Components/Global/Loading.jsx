@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import useAuth from '../../hooks/useAuth'
 
 const Loading = () => {
+
+  const { getAccountInfo } = useAuth();
+
+  useEffect(() => {
+    getAccountInfo();
+  }, [])
+
   return (
     <div className='absolute z-20 start-0 top-0 w-full h-full bg-gradient-to-r from-[#334155] to-[#0F172A] text-white'>
       <div className="flex justify-center items-center h-screen">

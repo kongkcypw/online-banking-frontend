@@ -3,17 +3,22 @@ import Amount from "../Components/Overall/Amount";
 import AllTransaction from "../Components/Overall/AllTransaction";
 import AlertModal from "../Components/Global/AlertModal";
 import useAuth from "../hooks/useAuth";
+import Loading from "../Components/Global/Loading";
 
 const Overall = () => {
 
     const { userAccountInfo } = useAuth();
 
-    return(
+    return (
         <div className="h-screen">
-            <Amount info={userAccountInfo}/>
-            <AllTransaction/>
-            {/* <AlertModal/> */}
+            {(userAccountInfo)
+                ? <div>
+                    <Amount info={userAccountInfo} />
+                    <AllTransaction />
+                </div>
+                : <Loading />}
         </div>
     )
+
 }
 export default Overall;
