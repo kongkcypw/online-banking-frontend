@@ -30,12 +30,14 @@ import { PaymentProvider } from "./contexts/paymentContext";
 import PaymentConfirm from "./pages/payment/PaymentConfirm";
 import Welcome from "./Components/Home/Welcome";
 import Missing from "./pages/Missing";
-import EmpDashboard from "./pages/employee/EmpDashboard";
+import EmpDashboard from "./pages/role_employee/EmpDashboard";
 import ContactBank from "./pages/ContactBank";
 import { WithDrawProvider } from "./contexts/withdrawContext";
 import WithDrawConfirm from "./pages/payment/WithDrawConfirm";
 import SummaryStatement from "./pages/SummaryStatement";
 import Favorite from "./pages/Favorite";
+import SpvDashboard from "./pages/role_supervisor/SpvDashboard";
+import SpvViewTransaction from "./pages/role_supervisor/SpvViewTransaction";
 
 function App() {
 
@@ -58,7 +60,7 @@ function App() {
             <Route path="/register/pin" element={<RegisterProvider><CreatePin /></RegisterProvider>} />
 
             {/* Role: User (Permission Level 0) */}
-            <Route element={<RequireLogin allowedPermissions={[0,1]} />}>
+            <Route element={<RequireLogin allowedPermissions={[0, 1]} />}>
               <Route path="/" element={<Home />} />
               <Route path="/auth-pin" element={<AuthPin />} />
 
@@ -83,6 +85,12 @@ function App() {
             {/* Role: Employee (Permission Level 1) */}
             <Route element={<RequireLogin allowedPermissions={[1]} />}>
               <Route path="/emp/dashboard" element={<EmpDashboard />} />
+            </Route>
+
+            {/* Role: Employee (Permission Level 2) */}
+            <Route element={<RequireLogin allowedPermissions={[1]} />}>
+              <Route path="/spv/dashboard" element={<SpvDashboard />} />
+              <Route path="/spv/view-transaction" element={<SpvViewTransaction />} />
             </Route>
 
             {/* catch all */}
