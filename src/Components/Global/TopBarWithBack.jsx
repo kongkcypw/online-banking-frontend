@@ -25,9 +25,10 @@ const TopbarWithBack = () => {
 
     const splitPathName = location.pathname.split("/");
     const isEmployee = splitPathName[1] === "emp"
+    const isSupervisor = splitPathName[1] === "spv"
 
     return (
-        <div className={`fixed ${(isHome || isOverall || isRegister || isWelcome || isEmployee) ? " hidden" : "block"} w-full top-0 start-0 py-2 pt-3 z-10 bg-gradient-to-r from-slate-700 to-slate-800`}>
+        <div className={`fixed ${(isHome || isOverall || isRegister || isWelcome || isEmployee || isSupervisor) ? " hidden" : "block"} w-full top-0 start-0 py-2 pt-3 z-10 bg-gradient-to-r from-slate-700 to-slate-800`}>
             <div className="grid grid-cols-3 items-center">
                 <Link to="/">
                     <button 
