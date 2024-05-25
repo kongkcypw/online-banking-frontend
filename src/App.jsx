@@ -48,6 +48,7 @@ import SpvAddBill from "./pages/role_supervisor/SpvAddBill";
 import EmpManageUser from "./pages/role_employee/EmpManageUser";
 import SpvRegisEmp from "./pages/role_supervisor/SpvRegisEmp";
 import SpvTopUp from "./pages/role_supervisor/SpvTopUp";
+import EmpManageAtm from "./pages/role_employee/EmpAtm";
 
 function App() {
 
@@ -96,6 +97,7 @@ function App() {
             <Route element={<RequireLogin allowedPermissions={[1]} />}>
               <Route path="/emp/dashboard" element={<EmpDashboard />} />
               <Route path="/emp/manage/user" element={<EmpManageUser />} />
+              <Route path="/emp/manage/atm" element={<EmpManageAtm />} />
             </Route>
 
             {/* Role: Employee (Permission Level 2) */}
