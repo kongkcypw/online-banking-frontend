@@ -10,7 +10,7 @@ const Loading = () => {
   }, [])
 
   return (
-    <div className='absolute z-20 start-0 top-0 w-full h-full bg-gradient-to-r from-[#334155] to-[#0F172A] text-white'>
+    <div className='absolute z-50 start-0 top-0 w-full min-h-screen bg-gradient-to-r from-[#334155] to-[#0F172A] text-white'>
       <div className="flex justify-center items-center h-screen">
         <div className='relative'>
           <div className="border-2 border-slate-400 rounded-full w-40 h-40"></div>
