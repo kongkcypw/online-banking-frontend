@@ -38,6 +38,14 @@ import SummaryStatement from "./pages/SummaryStatement";
 import Favorite from "./pages/Favorite";
 import SpvDashboard from "./pages/role_supervisor/SpvDashboard";
 import SpvViewTransaction from "./pages/role_supervisor/SpvViewTransaction";
+import BmgViewTransaction from "./pages/role_bankmanager/BmgViewTransaction";
+import BmgDashboard from "./pages/role_bankmanager/BmgDashboard";
+import SpvOtherService from "./pages/role_supervisor/SpvOtherService";
+import SpvTopupManage from "./pages/role_supervisor/SpvTopupManage";
+import SpvBillManage from "./pages/role_supervisor/SpvBillManage";
+import SpvAddTopup from "./pages/role_supervisor/SpvAddTopup";
+import SpvAddBill from "./pages/role_supervisor/SpvAddBill";
+import EmpManageUser from "./pages/role_employee/EmpManageUser";
 
 function App() {
 
@@ -85,12 +93,24 @@ function App() {
             {/* Role: Employee (Permission Level 1) */}
             <Route element={<RequireLogin allowedPermissions={[1]} />}>
               <Route path="/emp/dashboard" element={<EmpDashboard />} />
+              <Route path="/emp/manage/user" element={<EmpManageUser />} />
             </Route>
 
             {/* Role: Employee (Permission Level 2) */}
             <Route element={<RequireLogin allowedPermissions={[1]} />}>
               <Route path="/spv/dashboard" element={<SpvDashboard />} />
               <Route path="/spv/view-transaction" element={<SpvViewTransaction />} />
+              <Route path="/spv/other-service" element={<SpvOtherService />} />
+              <Route path="/spv/other-service/add/topup" element={<SpvAddTopup />} />
+              <Route path="/spv/other-service/add/bill" element={<SpvAddBill />} />
+              <Route path="/spv/other-service/edit/topup/:id" element={<SpvTopupManage />} />
+              <Route path="/spv/other-service/edit/bill/:id" element={<SpvBillManage />} />
+            </Route>
+
+            {/* Role: Employee (Permission Level 3) */}
+            <Route element={<RequireLogin allowedPermissions={[1]} />}>
+                <Route path="/bmg/dashboard" element={<BmgDashboard />} />
+                <Route path="/bmg/view-transaction" element={<BmgViewTransaction />} />
             </Route>
 
             {/* catch all */}
