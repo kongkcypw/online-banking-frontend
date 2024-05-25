@@ -37,7 +37,7 @@ const TranferGroup = ({ accountnum, setAccountnum, amount, setAmount, handleInpu
                                 value={payDescription}
                                 onChange={(e) => setPayDescription(e.target.value)}
                                 maxLength={62}
-                                className="text-left text-black mt-1 block w-full focus:outline-none focus:text-orange-400"
+                                className="text-left resize-none text-black mt-1 block w-full focus:outline-none focus:text-orange-400"
                             />
                         </div>
                     </div>

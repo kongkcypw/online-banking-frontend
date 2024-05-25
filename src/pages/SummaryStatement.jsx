@@ -96,7 +96,7 @@ const SummaryStatement = () => {
     const thaiDate = getCurrentDate();
 
     return (
-        <div className='text-white'>
+        <div className='text-white overflow-y-auto'>
             {userAccountInfo
                 ? <UserInfoStatement info={userAccountInfo} /> 
                 : <Loading />}

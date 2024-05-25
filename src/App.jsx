@@ -46,12 +46,14 @@ import SpvBillManage from "./pages/role_supervisor/SpvBillManage";
 import SpvAddTopup from "./pages/role_supervisor/SpvAddTopup";
 import SpvAddBill from "./pages/role_supervisor/SpvAddBill";
 import EmpManageUser from "./pages/role_employee/EmpManageUser";
+import SpvRegisEmp from "./pages/role_supervisor/SpvRegisEmp";
+import SpvTopUp from "./pages/role_supervisor/SpvTopUp";
 
 function App() {
 
   return (
     <>
-      <div className="min-h-screen font-notoTH pt-12">
+      <div className="min-h-screen font-notoTH pt-12 overflow-hidden">
         <Router>
           <Topbar />
           <TopbarWithBack />
@@ -100,6 +102,7 @@ function App() {
             <Route element={<RequireLogin allowedPermissions={[1]} />}>
               <Route path="/spv/dashboard" element={<SpvDashboard />} />
               <Route path="/spv/view-transaction" element={<SpvViewTransaction />} />
+
               <Route path="/spv/other-service" element={<SpvOtherService />} />
               <Route path="/spv/other-service/add/topup" element={<SpvAddTopup />} />
               <Route path="/spv/other-service/add/bill" element={<SpvAddBill />} />
@@ -109,8 +112,10 @@ function App() {
 
             {/* Role: Employee (Permission Level 3) */}
             <Route element={<RequireLogin allowedPermissions={[1]} />}>
-                <Route path="/bmg/dashboard" element={<BmgDashboard />} />
-                <Route path="/bmg/view-transaction" element={<BmgViewTransaction />} />
+              <Route path="/bmg/dashboard" element={<BmgDashboard />} />
+              <Route path="/bmg/view-transaction" element={<BmgViewTransaction />} />
+              <Route path="/spv/register-form" element={<SpvRegisEmp />} />
+              <Route path="/spv/topup" element={<SpvTopUp />} />
             </Route>
 
             {/* catch all */}
