@@ -69,6 +69,7 @@ function App() {
             <Route path="/register/account" element={<RegisterProvider><RegisterAccount /></RegisterProvider>} />
             <Route path="/register/confirm" element={<RegisterProvider><ConfirmRegister /></RegisterProvider>} />
             <Route path="/register/pin" element={<RegisterProvider><CreatePin /></RegisterProvider>} />
+            <Route path="/login-admin" element={<Login />} />
 
             {/* Role: User (Permission Level 0) */}
             <Route element={<RequireLogin allowedPermissions={[0, 1]} />}>
@@ -101,10 +102,11 @@ function App() {
             </Route>
 
             {/* Role: Employee (Permission Level 2) */}
-            <Route element={<RequireLogin allowedPermissions={[1]} />}>
+            <Route element={<RequireLogin allowedPermissions={[0, 1]} />}>
+              <Route path="/manager/user" element={<SpvDashboard />} />
               <Route path="/spv/dashboard" element={<SpvDashboard />} />
+              <Route path="/spv/register-emp" element={<SpvRegisEmp />} />
               <Route path="/spv/view-transaction" element={<SpvViewTransaction />} />
-
               <Route path="/spv/other-service" element={<SpvOtherService />} />
               <Route path="/spv/other-service/add/topup" element={<SpvAddTopup />} />
               <Route path="/spv/other-service/add/bill" element={<SpvAddBill />} />
@@ -113,11 +115,9 @@ function App() {
             </Route>
 
             {/* Role: Employee (Permission Level 3) */}
-            <Route element={<RequireLogin allowedPermissions={[1]} />}>
+            <Route element={<RequireLogin allowedPermissions={[0, 1]} />}>
               <Route path="/bmg/dashboard" element={<BmgDashboard />} />
               <Route path="/bmg/view-transaction" element={<BmgViewTransaction />} />
-              <Route path="/spv/register-form" element={<SpvRegisEmp />} />
-              <Route path="/spv/topup" element={<SpvTopUp />} />
             </Route>
 
             {/* catch all */}
