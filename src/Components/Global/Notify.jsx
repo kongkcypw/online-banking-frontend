@@ -25,7 +25,7 @@ const NotifyComponent = ({ AccountNumber, Amount, datetime }) => {
         <div className='flex items-center gap-x-2 '>
             <img className='h-12 rounded-lg' src="https://i.ibb.co/C1c2QcN/Krungthon-Previous.png" />
             <div className='text-left'>
-                <p className='text-sm font-bold'>รายการเงินเข้า</p>
+                <p className='text-sm font-bold'>รายการเงินออก</p>
                 <p className='text-sm'>บัญชี XXX-X-X{AccountNumber.slice(5, 9)}-X จำนวนเงิน {Amount} บาท วันที่ {datetime}</p>
             </div>
         </div>

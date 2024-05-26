@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DestDetail = ({ type, detail }) => {
+const DestDetail = ({ type, detail, description }) => {
 
     console.log(detail);
 
@@ -16,6 +16,10 @@ const DestDetail = ({ type, detail }) => {
                         <div className='flex justify-between'>
                             <p className='text-slate-600'>ชื่อบัญชี:</p>
                             <p className='text-black'>{detail.FirstName} {detail.LastName}</p>
+                        </div>
+                        <div className='flex justify-between'>
+                            <p className='text-slate-600'>โน้ต:</p>
+                            <p className='text-black'>{description || "-"}</p>
                         </div>
                     </div>
                 }

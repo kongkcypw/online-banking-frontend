@@ -28,6 +28,8 @@ const ListDetail = ({ transactionEachDay, date, time_options, dateGroupIndex, ha
         )
     }
 
+    console.log(transactionEachDay);
+
     return (
         <div>
             {transactionEachDay[date].map((transaction, index) => (
@@ -49,7 +51,8 @@ const ListDetail = ({ transactionEachDay, date, time_options, dateGroupIndex, ha
                     {(isDisplayDetail && dateIndex === dateGroupIndex && detailIndex === index)
                         ? <DestDetail
                             type={transaction.TransactionType}
-                            detail={transaction.Detail} />
+                            detail={transaction.Detail}
+                            description={transaction.Description} />
                         : null
                     }
                 </div>
