@@ -27,11 +27,10 @@ const PaymentConfirm = () => {
 
   const navigate = useNavigate();
 
-  const { userAccountInfo } = useContext(UserContext);
+  const { userAccountInfo, getAccountInfo } = useContext(UserContext);
   const { POST_DATA_WITH_BODYPARAMS } = useDataFetch();
 
   const [isPaymentSuccess, setIsPaymentSuccess] = useState(null);
-  const [startBouceAnimate, setStartBouceAnimate] = useState(false);
 
   const handleConfirmPayment = async () => {
     try {
@@ -45,20 +44,13 @@ const PaymentConfirm = () => {
         transactionFee: 0
       }
       const response = await POST_DATA_WITH_BODYPARAMS("/transaction/insert", bodyParams);
+      getAccountInfo();
       console.log(response);
       setIsPaymentSuccess(true)
     } catch (error) {
-      console.log(error.response.status)
+      console.log(error)
       setIsPaymentSuccess(false)
-      // await bouceNotification();
     }
-  }
-
-  const bouceNotification = async () => {
-    setStartBouceAnimate(true)
-    setTimeout(() => {
-      setStartBouceAnimate(false);
-    }, 1000);
   }
 
   return (

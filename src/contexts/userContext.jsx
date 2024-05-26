@@ -125,6 +125,11 @@ const UserProvider = ({ children }) => {
         }
     }
 
+    const logout = async() => {
+        window.localStorage.removeItem(import.meta.env.VITE_LOCAL_STORAGE_NAME);
+        return
+    }
+
     const value = {
         permissionLevel,
         authTokenInStorage,
@@ -139,7 +144,8 @@ const UserProvider = ({ children }) => {
         getAccountInfo,
         userEmail,
         userID,
-        userAccountInfo
+        userAccountInfo,
+        logout
     }
 
     return(
