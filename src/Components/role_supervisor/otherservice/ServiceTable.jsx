@@ -10,10 +10,10 @@ const ServiceTable = ({ list, type }) => {
 
     const handleAdd = () => {
         if(type === "topup"){
-            navigate("/spv/other-service/add/topup")
+            navigate("/bmg/manage/other-service/add/topup")
         }
         else if(type === "bill"){
-            navigate("/spv/other-service/add/bill")
+            navigate("/bmg/manage/other-service/add/bill")
         }
     }
 

@@ -11,8 +11,9 @@ const SupervisorList = ({ supervisorList }) => {
                 <div key={index} className='text-left my-2 drop-shadow-sm px-4 py-2 bg-white'>
                     <div className='flex justify-between'>
                         <div>
-                            <p className='text-xl'>{data.BranchName}({data.BranchID})</p>
-                            <p className='text-lg text-slate-600'>ผู้จัดการ: {data.FirstName} {data.LastName}</p>
+                            <p className='text-xl'>{data.BranchName}</p>
+                            <p className='text-lg text-slate-600'>รหัสสาขา: {data.BranchID}</p>
+                            <p className='text-lg text-slate-600'>ผู้ดูแลสาขา: {data.FirstName} {data.LastName}</p>
                         </div>
                         <p className='text-slate-600'>ข้อมูลเพิ่มเติม</p>
                     </div>

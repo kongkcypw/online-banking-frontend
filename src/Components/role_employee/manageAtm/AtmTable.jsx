@@ -26,7 +26,7 @@ const AtmTable = ({ atmList, setIsDisplayModal, setSelectedAtm }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {atmList.map((data, index) => (
+                            {atmList.slice(0,1).map((data, index) => (
                                 <tr key={index} className="hover:bg-slate-100 bg-white text-black">
                                     <td className="px-4 py-2 border-b">{index + 1}</td>
                                     <td className="px-4 py-2 border-b">{data.ATMID}</td>
