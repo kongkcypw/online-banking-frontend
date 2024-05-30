@@ -6,6 +6,7 @@ import ViewTable from '../../Components/role_employee/ViewTransaction/ViewTable'
 import ViewDestinationModal from '../../Components/role_employee/ViewTransaction/ViewDestinationModal';
 import moment from 'moment'; // Import moment for date formatting
 import { DatePicker, Space } from 'antd';
+import SpvSidebar from '../../Components/Layout/SpvSidebar';
 const { RangePicker } = DatePicker;
 
 const SpvViewTransaction = () => {
@@ -92,13 +93,12 @@ const SpvViewTransaction = () => {
     };
 
     return (
-        <div className='absolute w-full h-full start-0 top-0'>
-            <img className="absolute bg-cover h-screen w-full start-0 top-0" src="https://i.ibb.co/xD9gmnV/67163.jpg" />
-
+        <div className='absolute bg-[#F7F7F8] w-full min-h-screen start-0 top-0'>
+            <SpvSidebar />
             {isLoading ? <Loading /> : null}
 
-            <div className='absolute z-10 w-[90%] place-content-center m-20'>
-                <div className='flex justify-between text-white'>
+            <div className='ml-72 mt-16 w-[80%]'>
+                <div className='flex justify-between text-black'>
                     <p className='text-2xl my-auto'>ข้อมูลธุรกรรม</p>
                     <div className='flex items-center gap-4 my-auto'>
                         <p className='text-lg my-auto'>ช่วงเวลา</p>

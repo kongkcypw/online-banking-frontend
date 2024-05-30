@@ -28,7 +28,7 @@ const EmpSidebar = () => {
                     <p className='my-auto ml-2'>ข้อมูลธุรกรรม</p>
                 </div>
             </Link>
-            <Link to="/emp/dashboard">
+            <Link to="/emp/manage/user">
                 <div className='flex px-6 py-4 text-slate-600 hover:bg-slate-100'>
                     <GoPeople className='text-3xl' />
                     <p className='my-auto ml-2'>ข้อมูลลูกค้า</p>
@@ -37,7 +37,7 @@ const EmpSidebar = () => {
             <Link to="/emp/manage/atm">
                 <div className='flex px-6 py-4 text-slate-600 hover:bg-slate-100'>
                     <MdLocalAtm  className='text-3xl' />
-                    <p className='my-auto ml-2'>ตู้ ATM</p>
+                    <p className='my-auto ml-2'>ข้อมูล ATM</p>
                 </div>
             </Link>
             <Link to="/emp/manage/atm">

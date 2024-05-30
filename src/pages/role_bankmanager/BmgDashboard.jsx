@@ -126,6 +126,9 @@ const BmgDashboard = () => {
                             {(bankList && bankList.length > 0)
                                 && <BankList bankList={bankList} />}
                         </div>
+
+
+                        
                     </div>
                 </div>
             </div>

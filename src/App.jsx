@@ -49,6 +49,14 @@ import EmpManageUser from "./pages/role_employee/EmpManageUser";
 import SpvRegisEmp from "./pages/role_supervisor/SpvRegisEmp";
 import SpvTopUp from "./pages/role_supervisor/SpvTopUp";
 import EmpManageAtm from "./pages/role_employee/EmpAtm";
+import SpvManageEmp from "./pages/role_supervisor/SpvManageEmp";
+import BmgViewAccount from "./pages/role_bankmanager/BmgViewAccount";
+import BmgViewATM from "./pages/role_bankmanager/BmgViewATM";
+import BmgViewEmployee from "./pages/role_bankmanager/BmgViewEmployee";
+import BmgViewBranch from "./pages/role_bankmanager/BmgViewBranch";
+import BmgViewBank from "./pages/role_bankmanager/BmgViewBank";
+import BmgViewOtherService from "./pages/role_bankmanager/BmgViewOtherService";
+import BmgAddTopup from "./pages/role_bankmanager/BmgAddTopup";
 
 function App() {
 
@@ -95,7 +103,7 @@ function App() {
             </Route>
 
             {/* Role: Employee (Permission Level 1) */}
-            <Route element={<RequireLogin allowedPermissions={[1]} />}>
+            <Route element={<RequireLogin allowedPermissions={[0,1]} />}>
               <Route path="/emp/dashboard" element={<EmpDashboard />} />
               <Route path="/emp/manage/user" element={<EmpManageUser />} />
               <Route path="/emp/manage/atm" element={<EmpManageAtm />} />
@@ -103,8 +111,8 @@ function App() {
 
             {/* Role: Employee (Permission Level 2) */}
             <Route element={<RequireLogin allowedPermissions={[0, 1]} />}>
-              <Route path="/manager/user" element={<SpvDashboard />} />
               <Route path="/spv/dashboard" element={<SpvDashboard />} />
+              <Route path="/spv/manage/emp" element={<SpvManageEmp />} />
               <Route path="/spv/register-emp" element={<SpvRegisEmp />} />
               <Route path="/spv/view-transaction" element={<SpvViewTransaction />} />
               <Route path="/spv/other-service" element={<SpvOtherService />} />
@@ -118,6 +126,14 @@ function App() {
             <Route element={<RequireLogin allowedPermissions={[0, 1]} />}>
               <Route path="/bmg/dashboard" element={<BmgDashboard />} />
               <Route path="/bmg/view-transaction" element={<BmgViewTransaction />} />
+              <Route path="/bmg/view/account" element={<BmgViewAccount />} />
+              <Route path="/bmg/manage/atm" element={<BmgViewATM />} />
+              <Route path="/bmg/manage/emp" element={<BmgViewEmployee />} />
+              <Route path="/bmg/manage/branch" element={<BmgViewBranch />} />
+              <Route path="/bmg/manage/bank" element={<BmgViewBank />} />
+              <Route path="/bmg/manage/other-service" element={<BmgViewOtherService />} />
+              <Route path="/bmg/manage/other-service/add/topup" element={<BmgAddTopup />} />
+              <Route path="/bmg/manage/other-service/add/bill" element={<SpvAddBill />} />
             </Route>
 
             {/* catch all */}
