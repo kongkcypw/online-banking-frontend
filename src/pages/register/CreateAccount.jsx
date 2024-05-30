@@ -19,7 +19,7 @@ const CreateAccount = () => {
                 </div>
             </div>
 
-            <p className='text-2xl pt-4 px-2 font-bold text-left mt-8 text-white'>Krungthon-eSavings</p>
+            <p className='text-2xl pt-4 px-2 font-bold text-left -mt-4 text-white'>Krungthon-eSavings</p>
             <p className='text-2xl px-2 text-left mt-1 text-white'>Account</p>
 
             <div className='absolute bg-white start-0 w-full px-4 mt-24 min-h-screen'>

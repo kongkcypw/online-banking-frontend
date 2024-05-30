@@ -29,7 +29,7 @@ const Numpad = ({handleNumpadClick}) => {
     };
 
     return (
-        <div className='text-2xl pt-12 w-full'>
+        <div className='text-2xl pt-8 w-full'>
             <div className='flex justify-center'>
                 <div>
                     <div className='w-full grid grid-cols-3'>

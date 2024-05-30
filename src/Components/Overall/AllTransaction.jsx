@@ -45,7 +45,7 @@ const AllTransaction = () => {
                         <p className="text-white text-sm mt-2">ถอนเงิน</p>
                     </div>
                 </Link>
-                <Link>
+                <Link to="/statement">
                     <div className="col-span-1 flex-col mx-auto">
                         <div className="mx-auto border-2 rounded-full h-10 w-10 flex justify-center items-center">
                             <RiFilePaper2Line className="text-white text-2xl " />
@@ -53,7 +53,7 @@ const AllTransaction = () => {
                         <p className="text-white text-sm mt-2">Statement</p>
                     </div>
                 </Link>
-                <Link>
+                <Link to = "/summary-statement">
                     <div className="col-span-1 flex-col mx-auto">
                         <div className="mx-auto border-2 rounded-full h-10 w-10 flex justify-center items-center">
                             <PiFileMagnifyingGlass className="text-white text-2xl " />
@@ -69,7 +69,7 @@ const AllTransaction = () => {
                         <p className="text-white text-sm mt-2">เรียกเก็บเงิน</p>
                     </div>
                 </Link>
-                <Link>
+                <Link to="/contact-bank">
                     <div className="col-span-1 flex-col mx-auto">
                         <div className="mx-auto border-2 rounded-full h-10 w-10 flex justify-center items-center">
                             <LuPhone className="text-white text-2xl" />

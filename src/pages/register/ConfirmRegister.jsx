@@ -52,20 +52,21 @@ const ConfirmRegister = () => {
       account: {
         branchNumber: regBranchNumber,
         branchID: regClosestBranchID,
-        balance: regClosestBranchID
+        bankID: "BK0001",
+        balance: regBalance
       }
     }
     const response = await POST_DATA_WITH_BODYPARAMS('/register/confirm', bodyParams);
     console.log(response);
     if(response.status === 200){
-      storeUser(response.email, response.userID);
+      storeUser(response.email, response.userID, response.permissionLevel);
       navigate("/register/pin");
     }
   }
 
   return (
     <div className='text-black'>
-      <p className='text-xl px-2 font-bold text-left mt-8 text-white'>เปิดบัญชี eSavings</p>
+      <p className='text-xl px-2 font-bold text-left -mt-4 text-white'>เปิดบัญชี eSavings</p>
       <p className='text-xl px-2 font-bold text-left mt-1 text-orange-400'>ตรวจสอบข้อมูล</p>
       <div className='absolute bg-white start-0 w-full px-4 mt-24 min-h-screen'>
         <div className=' bg-white w-full px-2 pb-2 rounded-lg drop-shadow-lg bottom-10 -mt-12'>
