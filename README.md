@@ -1,8 +1,9 @@
-# React + Vite
+# Online banking web application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The project is about database design for banking system, which have one more permission level and roles, ex user, manager.
+For user  will access function about transaction and view transaction history.
+For employee/manager will access about history of customer's transaction, customer's information and manger transaction services
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+UI
+- Mobile (user - banking web application)
+- PC (manager - banking dashboard)
