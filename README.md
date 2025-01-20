@@ -2,11 +2,11 @@
 - Final Project: **CPE241 Database Systems**
 
 ## Team
-- [Chayapol Wongpuwarak]: Tech Leader, Full Stack Developer, DevOps
-- [Danai Saengbuarmad]: Frontend Developer, Graphic Designer, UX & UI Designer
-- [Chayut Khodmechai]: Frontend Developer
-- [Trinnaphop Katirattanachai]: Frontend Developer
-- [Natlada Simasathien]: UX & UI Designer
+- [Chayapol Wongpuwarak](https://github.com/kongkcypw): Tech Leader, Full Stack Developer, DevOps
+- [Danai Saengbuarmad](https://github.com/DanaiLT): Frontend Developer, Graphic Designer, UX & UI Designer
+- [Chayut Khodmechai](https://github.com/Chayut13): Frontend Developer
+- [Trinnaphop Katirattanachai](https://github.com/wawawind): Frontend Developer
+- [Natlada Simasathien](https://github.com/mmoladaa): UX & UI Designer
 
 ## Overview
 Krungthon Previous is a website platform for Banking, which have many permission levels and roles, ex user, manager.
