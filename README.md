@@ -1,6 +1,13 @@
 # Online banking web application (Krungthon Previous)
 - Final Project: **CPE241 Database Systems**
 
+## Team
+- [Chayapol Wongpuwarak]: Tech Leader, Full Stack Developer, DevOps
+- [Danai Saengbuarmad]: Frontend Developer, Graphic Designer, UX & UI Designer
+- [Chayut Khodmechai]: Frontend Developer
+- [Trinnaphop Katirattanachai]: Frontend Developer
+- [Natlada Simasathien]: UX & UI Designer
+
 ## Overview
 Krungthon Previous is a website platform for Banking, which have many permission levels and roles, ex user, manager.
 For user/customer will access function about transaction and view their own transaction history.
@@ -16,7 +23,7 @@ For employee/manager will access about history of customer's transaction, custom
 - Withdrawal
 - Top-Up Services
 - Bill Payments
-****
+**PC**
 - Viewing and editing customer profile information.
 - Viewing transaction details.
 - Refilling ATM machines.
