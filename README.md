@@ -23,6 +23,7 @@ For employee/manager will access about history of customer's transaction, custom
 - Withdrawal
 - Top-Up Services
 - Bill Payments
+  
 **PC**
 - Viewing and editing customer profile information.
 - Viewing transaction details.
